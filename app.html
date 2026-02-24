@@ -612,65 +612,116 @@
     <script>
         const langCodes = {'Afrikaans': 'af', 'Albanian': 'sq', 'Amharic': 'am', 'Arabic': 'ar', 'Armenian': 'hy', 'Assamese': 'as', 'Aymara': 'ay', 'Azerbaijani': 'az', 'Bambara': 'bm', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bhojpuri': 'bho', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chinese (Simplified)': 'zh-CN', 'Chinese (Traditional)': 'zh-TW', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dhivehi': 'dv', 'Dogri': 'doi', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Ewe': 'ee', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Guarani': 'gn', 'Gujarati': 'gu', 'Haitian Creole': 'ht', 'Hausa': 'ha', 'Hawaiian': 'haw', 'Hebrew': 'iw', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Ilocano': 'ilo', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jv', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Kinyarwanda': 'rw', 'Konkani': 'gom', 'Korean': 'ko', 'Krio': 'kri', 'Kurdish': 'ku', 'Kurdish (Sorani)': 'ckb', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lingala': 'ln', 'Lithuanian': 'lt', 'Luganda': 'lg', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Maithili': 'mai', 'Malagasy': 'mg', 'Malay': 'ms', 'Malayalam': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Meiteilon (Manipuri)': 'mni-Mtei', 'Mizo': 'lus', 'Mongolian': 'mn', 'Myanmar (Burmese)': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Nyanja (Chichewa)': 'ny', 'Odia (Oriya)': 'or', 'Oromo': 'om', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese (Portugal)': 'pt-PT', 'Portuguese (Brazil)': 'pt', 'Punjabi': 'pa', 'Quechua': 'qu', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Sanskrit': 'sa', 'Scots Gaelic': 'gd', 'Sepedi': 'nso', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Tatar': 'tt', 'Telugu': 'te', 'Thai': 'th', 'Tigrinya': 'ti', 'Tsonga': 'ts', 'Turkish': 'tr', 'Turkmen': 'tk', 'Twi': 'ak', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'};
 
-        function setLanguage(val) {
-            // Save choice
-            localStorage.setItem('eburon-lang', val);
-            document.querySelectorAll('.lang-select').forEach(select => select.value = val);
+        let translateTimer = null;
 
-            // Handle native languages (English and Dutch via manual data-language toggle)
-            if (val === 'en' || val === 'nl') {
-                document.body.setAttribute('data-language', val);
-                
-                // Reset Google Translate if active
-                const iframe = document.querySelector('iframe.goog-te-banner-frame');
-                if (iframe) {
-                    const restoreButton = iframe.contentWindow.document.querySelector('.goog-te-button button');
-                    if (restoreButton) {
-                        restoreButton.click();
+        function setGoogTransCookie(value) {
+            document.cookie = `googtrans=${value}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function clearGoogTransCookie() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            if (window.location.hostname) {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function findTargetCode(langName, combo) {
+            const mappedCode = langCodes[langName] || '';
+            if (mappedCode && combo.querySelector(`option[value="${mappedCode}"]`)) {
+                return mappedCode;
+            }
+
+            const normalized = langName.trim().toLowerCase();
+            const byLabel = Array.from(combo.options).find(option =>
+                option.text.trim().toLowerCase() === normalized
+            );
+
+            return byLabel ? byLabel.value : mappedCode;
+        }
+
+        function applyGoogleTranslateLanguage(langName) {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            let attempts = 0;
+            translateTimer = setInterval(() => {
+                attempts += 1;
+                const combo = document.querySelector('.goog-te-combo');
+
+                if (combo) {
+                    const targetCode = findTargetCode(langName, combo);
+                    if (targetCode) {
+                        combo.value = targetCode;
+                        combo.dispatchEvent(new Event('change'));
+                        setGoogTransCookie(`/en/${targetCode}`);
+                        clearInterval(translateTimer);
+                        translateTimer = null;
+                        return;
                     }
                 }
-                
-                // Remove cookie that keeps GT active across reloads
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
+
+                if (attempts >= 20) {
+                    clearInterval(translateTimer);
+                    translateTimer = null;
+                    console.warn(`Google Translate could not resolve language: ${langName}`);
+                }
+            }, 150);
+        }
+
+        function resetGoogleTranslateState() {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            const combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = '';
+                combo.dispatchEvent(new Event('change'));
+            }
+            clearGoogTransCookie();
+        }
+
+        function setLanguage(val) {
+            localStorage.setItem('eburon-lang', val);
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = val;
+            });
+
+            if (val === 'en' || val === 'nl') {
+                document.body.setAttribute('data-language', val);
+                resetGoogleTranslateState();
                 return;
             }
 
-            // Handle translated languages via Google Translate widget
             if (val.startsWith('gt-')) {
-                const langName = val.replace('gt-', '');
-                const targetCode = langCodes[langName] || 'en';
-                
-                // Keep body showing English explicitly (as base for GT to pick up)
+                const langName = val.slice(3);
                 document.body.setAttribute('data-language', 'en');
-
-                // Set Google Translate cookie and reload so the script picks it up instantly
-                document.cookie = `googtrans=/en/${targetCode}; path=/; domain=${window.location.hostname}`;
-                document.cookie = `googtrans=/en/${targetCode}; path=/;`;
-                
-                // Trigger translation (or reload to catch cookie)
-                window.location.reload();
+                applyGoogleTranslateLanguage(langName);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('eburon-lang') || 'en';
-            
-            // Set select elements to match
-            document.querySelectorAll('.lang-select').forEach(select => select.value = savedLang);
-            
-            // Set initial state for data-language if native
+
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = savedLang;
+            });
+
             if (savedLang === 'en' || savedLang === 'nl') {
                 document.body.setAttribute('data-language', savedLang);
-                
-                // Clear any lingering GT cookies just in case
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + window.location.hostname + ';';
-            } else {
-                // For GT active languages, we keep base text as English so the widget translates English to Target
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (savedLang.startsWith('gt-')) {
                 document.body.setAttribute('data-language', 'en');
-                
-                // The googtrans cookie is already handling the GT injection on load.
+                applyGoogleTranslateLanguage(savedLang.slice(3));
             }
         });
     </script>
