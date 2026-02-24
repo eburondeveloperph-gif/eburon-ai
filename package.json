@@ -1,0 +1,27 @@
+{
+  "name": "jolernout",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "vercel:version": "vercel --version",
+    "deploy:preview": "vercel --yes",
+    "deploy:prod": "vercel --prod --yes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eburondeveloperph-gif/eburon-ai.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/eburondeveloperph-gif/eburon-ai/issues"
+  },
+  "homepage": "https://github.com/eburondeveloperph-gif/eburon-ai#readme",
+  "devDependencies": {
+    "vercel": "^50.22.1"
+  }
+}
