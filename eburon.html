@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eburon AI | The Intelligence of Tomorrow</title>
+    <style>
+        /* Premium Dark Visionary Theme - Apple Inspired */
+        :root {
+            --background: #000000;
+            --foreground: #f5f5f7;
+            --primary: #f59e0b;
+            /* Gold/Amber */
+            --primary-foreground: #000000;
+            --secondary: #1d1d1f;
+            --muted: #424245;
+            --muted-foreground: #86868b;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--foreground);
+            background: var(--background);
+            line-height: 1.5;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            color: var(--foreground);
+            letter-spacing: -0.015em;
+            margin-top: 0;
+        }
+
+        h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            font-weight: 700;
+            margin-bottom: 0.2em;
+        }
+
+        h2 {
+            font-size: 48px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 21px;
+            line-height: 1.5;
+            color: #a1a1a6;
+            margin-bottom: 1.2em;
+            font-weight: 400;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Components */
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 21px;
+            color: var(--foreground);
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links a {
+            color: #e8e8ed;
+            text-decoration: none;
+            font-size: 12px;
+            margin-left: 24px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 30%, rgba(251, 191, 36, 0.15), transparent 50%);
+        }
+
+        /* Feature Cards */
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .card p {
+            font-size: 17px;
+            margin-bottom: 0;
+        }
+
+        .bilingual-card {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .lang-block {
+            margin-bottom: 2px;
+        }
+
+        .lang-label {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            margin-bottom: 8px;
+        }
+
+        .lang-inline {
+            color: #fff;
+            font-size: 17px;
+        }
+
+        .lang-inline span {
+            display: block;
+            color: #a1a1a6;
+            margin-top: 6px;
+        }
+
+        .section-note {
+            text-align: center;
+            max-width: 760px;
+            margin: -25px auto 45px;
+            font-size: 17px;
+            color: #86868b;
+        }
+
+        .small-muted {
+            color: #86868b;
+            font-size: 14px;
+        }
+
+        /* Chat Interface Mockup */
+        .chat-interface {
+            background: #1c1c1e;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #333;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
+        }
+
+        .chat-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #333;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #444;
+        }
+
+        .dot.red {
+            background: #ff5f57;
+        }
+
+        .dot.yellow {
+            background: #febc2e;
+        }
+
+        .dot.green {
+            background: #28c840;
+        }
+
+        .chat-body {
+            padding: 40px;
+            text-align: left;
+        }
+
+        .message {
+            margin-bottom: 24px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            margin-left: auto;
+            text-align: right;
+            color: #fff;
+        }
+
+        .message.ai {
+            margin-right: auto;
+            color: #a1a1a6;
+        }
+
+        .bubble {
+            display: inline-block;
+            padding: 12px 18px;
+            border-radius: 18px;
+            font-size: 17px;
+            line-height: 1.4;
+        }
+
+        .user .bubble {
+            background: var(--primary);
+            color: #000;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai .bubble {
+            background: #2c2c2e;
+            color: #fff;
+            border-bottom-left-radius: 4px;
+        }
+
+        /* Code Block */
+        .code-snippet {
+            font-family: monospace;
+            background: #000;
+            padding: 20px;
+            border-radius: 12px;
+            color: var(--primary);
+            border: 1px solid #333;
+            margin-top: 40px;
+            display: inline-block;
+            font-size: 15px;
+        }
+
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    
+        /* Language Switcher */
+        body[data-language="en"] .lang-nl { display: none !important; }
+        body[data-language="nl"] .lang-en { display: none !important; }
+        
+        .lang-switcher-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 20px;
+        }
+        .lang-select {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .lang-select option {
+            background: #000;
+            color: #fff;
+        }
+        .powered-by {
+            font-size: 9px;
+            color: #86868b;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+</style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">JO LERNOUT</a>
+            <div class="nav-links">
+                <a href="index.html">The Story</a>
+                <a href="eburon.html" style="color: #fff; opacity: 1;">Eburon AI</a>
+                <a href="app.html">Apps</a>
+                <div class="lang-switcher-container">
+                    <select class="lang-select" title="Language Selection" aria-label="Language Option" onchange="setLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="nl">Dutch</option>
+                        <option value="gt-Flemish">Flemish</option>
+                        <option value="gt-Abkhaz">Abkhaz</option>
+                        <option value="gt-Acehnese">Acehnese</option>
+                        <option value="gt-Acholi">Acholi</option>
+                        <option value="gt-Afar">Afar</option>
+                        <option value="gt-Afrikaans">Afrikaans</option>
+                        <option value="gt-Albanian">Albanian</option>
+                        <option value="gt-Alur">Alur</option>
+                        <option value="gt-Amharic">Amharic</option>
+                        <option value="gt-Arabic">Arabic</option>
+                        <option value="gt-Armenian">Armenian</option>
+                        <option value="gt-Assamese">Assamese</option>
+                        <option value="gt-Avar">Avar</option>
+                        <option value="gt-Awadhi">Awadhi</option>
+                        <option value="gt-Aymara">Aymara</option>
+                        <option value="gt-Azerbaijani">Azerbaijani</option>
+                        <option value="gt-Balinese">Balinese</option>
+                        <option value="gt-Baluchi">Baluchi</option>
+                        <option value="gt-Bambara">Bambara</option>
+                        <option value="gt-Baoulé">Baoulé</option>
+                        <option value="gt-Bashkir">Bashkir</option>
+                        <option value="gt-Basque">Basque</option>
+                        <option value="gt-Batak Karo">Batak Karo</option>
+                        <option value="gt-Batak Simalungun">Batak Simalungun</option>
+                        <option value="gt-Batak Toba">Batak Toba</option>
+                        <option value="gt-Belarusian">Belarusian</option>
+                        <option value="gt-Bemba">Bemba</option>
+                        <option value="gt-Bengali">Bengali</option>
+                        <option value="gt-Betawi">Betawi</option>
+                        <option value="gt-Bhojpuri">Bhojpuri</option>
+                        <option value="gt-Bikol">Bikol</option>
+                        <option value="gt-Bosnian">Bosnian</option>
+                        <option value="gt-Breton">Breton</option>
+                        <option value="gt-Bulgarian">Bulgarian</option>
+                        <option value="gt-Buryat">Buryat</option>
+                        <option value="gt-Cantonese">Cantonese</option>
+                        <option value="gt-Catalan">Catalan</option>
+                        <option value="gt-Cebuano">Cebuano</option>
+                        <option value="gt-Chamorro">Chamorro</option>
+                        <option value="gt-Chechen">Chechen</option>
+                        <option value="gt-Chichewa">Chichewa</option>
+                        <option value="gt-Chinese (Simplified)">Chinese (Simplified)</option>
+                        <option value="gt-Chinese (Traditional)">Chinese (Traditional)</option>
+                        <option value="gt-Chuukese">Chuukese</option>
+                        <option value="gt-Chuvash">Chuvash</option>
+                        <option value="gt-Corsican">Corsican</option>
+                        <option value="gt-Crimean Tatar (Cyrillic)">Crimean Tatar (Cyrillic)</option>
+                        <option value="gt-Crimean Tatar (Latin)">Crimean Tatar (Latin)</option>
+                        <option value="gt-Croatian">Croatian</option>
+                        <option value="gt-Czech">Czech</option>
+                        <option value="gt-Danish">Danish</option>
+                        <option value="gt-Dari">Dari</option>
+                        <option value="gt-Dhivehi">Dhivehi</option>
+                        <option value="gt-Dinka">Dinka</option>
+                        <option value="gt-Dogri">Dogri</option>
+                        <option value="gt-Dombe">Dombe</option>
+                        <option value="gt-Dyula">Dyula</option>
+                        <option value="gt-Dzongkha">Dzongkha</option>
+                        <option value="gt-Esperanto">Esperanto</option>
+                        <option value="gt-Estonian">Estonian</option>
+                        <option value="gt-Ewe">Ewe</option>
+                        <option value="gt-Faroese">Faroese</option>
+                        <option value="gt-Fijian">Fijian</option>
+                        <option value="gt-Filipino">Filipino</option>
+                        <option value="gt-Finnish">Finnish</option>
+                        <option value="gt-Fon">Fon</option>
+                        <option value="gt-French">French</option>
+                        <option value="gt-French (Canada)">French (Canada)</option>
+                        <option value="gt-Frisian">Frisian</option>
+                        <option value="gt-Friulian">Friulian</option>
+                        <option value="gt-Fulani">Fulani</option>
+                        <option value="gt-Ga">Ga</option>
+                        <option value="gt-Galician">Galician</option>
+                        <option value="gt-Georgian">Georgian</option>
+                        <option value="gt-German">German</option>
+                        <option value="gt-Greek">Greek</option>
+                        <option value="gt-Guarani">Guarani</option>
+                        <option value="gt-Gujarati">Gujarati</option>
+                        <option value="gt-Haitian Creole">Haitian Creole</option>
+                        <option value="gt-Hakha Chin">Hakha Chin</option>
+                        <option value="gt-Hausa">Hausa</option>
+                        <option value="gt-Hawaiian">Hawaiian</option>
+                        <option value="gt-Hebrew">Hebrew</option>
+                        <option value="gt-Hiligaynon">Hiligaynon</option>
+                        <option value="gt-Hindi">Hindi</option>
+                        <option value="gt-Hmong">Hmong</option>
+                        <option value="gt-Hungarian">Hungarian</option>
+                        <option value="gt-Hunsrik">Hunsrik</option>
+                        <option value="gt-Iban">Iban</option>
+                        <option value="gt-Icelandic">Icelandic</option>
+                        <option value="gt-Igbo">Igbo</option>
+                        <option value="gt-Ilocano">Ilocano</option>
+                        <option value="gt-Indonesian">Indonesian</option>
+                        <option value="gt-Inuktut (Latin)">Inuktut (Latin)</option>
+                        <option value="gt-Inuktut (Syllabics)">Inuktut (Syllabics)</option>
+                        <option value="gt-Irish">Irish</option>
+                        <option value="gt-Italian">Italian</option>
+                        <option value="gt-Jamaican Patois">Jamaican Patois</option>
+                        <option value="gt-Japanese">Japanese</option>
+                        <option value="gt-Javanese">Javanese</option>
+                        <option value="gt-Jingpo">Jingpo</option>
+                        <option value="gt-Kalaallisut">Kalaallisut</option>
+                        <option value="gt-Kannada">Kannada</option>
+                        <option value="gt-Kanuri">Kanuri</option>
+                        <option value="gt-Kapampangan">Kapampangan</option>
+                        <option value="gt-Kazakh">Kazakh</option>
+                        <option value="gt-Khasi">Khasi</option>
+                        <option value="gt-Khmer">Khmer</option>
+                        <option value="gt-Kiga">Kiga</option>
+                        <option value="gt-Kikongo">Kikongo</option>
+                        <option value="gt-Kinyarwanda">Kinyarwanda</option>
+                        <option value="gt-Kituba">Kituba</option>
+                        <option value="gt-Kokborok">Kokborok</option>
+                        <option value="gt-Komi">Komi</option>
+                        <option value="gt-Konkani">Konkani</option>
+                        <option value="gt-Korean">Korean</option>
+                        <option value="gt-Krio">Krio</option>
+                        <option value="gt-Kurdish (Kurmanji)">Kurdish (Kurmanji)</option>
+                        <option value="gt-Kurdish (Sorani)">Kurdish (Sorani)</option>
+                        <option value="gt-Kyrgyz">Kyrgyz</option>
+                        <option value="gt-Lao">Lao</option>
+                        <option value="gt-Latgalian">Latgalian</option>
+                        <option value="gt-Latin">Latin</option>
+                        <option value="gt-Latvian">Latvian</option>
+                        <option value="gt-Ligurian">Ligurian</option>
+                        <option value="gt-Limburgish">Limburgish</option>
+                        <option value="gt-Lingala">Lingala</option>
+                        <option value="gt-Lithuanian">Lithuanian</option>
+                        <option value="gt-Lombard">Lombard</option>
+                        <option value="gt-Luganda">Luganda</option>
+                        <option value="gt-Luo">Luo</option>
+                        <option value="gt-Luxembourgish">Luxembourgish</option>
+                        <option value="gt-Macedonian">Macedonian</option>
+                        <option value="gt-Madurese">Madurese</option>
+                        <option value="gt-Maithili">Maithili</option>
+                        <option value="gt-Makassar">Makassar</option>
+                        <option value="gt-Malagasy">Malagasy</option>
+                        <option value="gt-Malay">Malay</option>
+                        <option value="gt-Malay (Jawi)">Malay (Jawi)</option>
+                        <option value="gt-Malayalam">Malayalam</option>
+                        <option value="gt-Maltese">Maltese</option>
+                        <option value="gt-Mam">Mam</option>
+                        <option value="gt-Manx">Manx</option>
+                        <option value="gt-Maori">Maori</option>
+                        <option value="gt-Marathi">Marathi</option>
+                        <option value="gt-Marshallese">Marshallese</option>
+                        <option value="gt-Marwadi">Marwadi</option>
+                        <option value="gt-Mauritian Creole">Mauritian Creole</option>
+                        <option value="gt-Meadow Mari">Meadow Mari</option>
+                        <option value="gt-Meiteilon (Manipuri)">Meiteilon (Manipuri)</option>
+                        <option value="gt-Minang">Minang</option>
+                        <option value="gt-Mizo">Mizo</option>
+                        <option value="gt-Mongolian">Mongolian</option>
+                        <option value="gt-Myanmar (Burmese)">Myanmar (Burmese)</option>
+                        <option value="gt-Nahuatl (Eastern Huasteca)">Nahuatl (Eastern Huasteca)</option>
+                        <option value="gt-Ndau">Ndau</option>
+                        <option value="gt-Ndebele (South)">Ndebele (South)</option>
+                        <option value="gt-Nepalbhasa (Newari)">Nepalbhasa (Newari)</option>
+                        <option value="gt-Nepali">Nepali</option>
+                        <option value="gt-NKo">NKo</option>
+                        <option value="gt-Norwegian">Norwegian</option>
+                        <option value="gt-Nuer">Nuer</option>
+                        <option value="gt-Occitan">Occitan</option>
+                        <option value="gt-Odia (Oriya)">Odia (Oriya)</option>
+                        <option value="gt-Oromo">Oromo</option>
+                        <option value="gt-Ossetian">Ossetian</option>
+                        <option value="gt-Pangasinan">Pangasinan</option>
+                        <option value="gt-Papiamento">Papiamento</option>
+                        <option value="gt-Pashto">Pashto</option>
+                        <option value="gt-Persian">Persian</option>
+                        <option value="gt-Polish">Polish</option>
+                        <option value="gt-Portuguese (Brazil)">Portuguese (Brazil)</option>
+                        <option value="gt-Portuguese (Portugal)">Portuguese (Portugal)</option>
+                        <option value="gt-Punjabi (Gurmukhi)">Punjabi (Gurmukhi)</option>
+                        <option value="gt-Punjabi (Shahmukhi)">Punjabi (Shahmukhi)</option>
+                        <option value="gt-Quechua">Quechua</option>
+                        <option value="gt-Qʼeqchiʼ">Qʼeqchiʼ</option>
+                        <option value="gt-Romani">Romani</option>
+                        <option value="gt-Romanian">Romanian</option>
+                        <option value="gt-Rundi">Rundi</option>
+                        <option value="gt-Russian">Russian</option>
+                        <option value="gt-Sami (North)">Sami (North)</option>
+                        <option value="gt-Samoan">Samoan</option>
+                        <option value="gt-Sango">Sango</option>
+                        <option value="gt-Sanskrit">Sanskrit</option>
+                        <option value="gt-Santali (Latin)">Santali (Latin)</option>
+                        <option value="gt-Santali (Ol Chiki)">Santali (Ol Chiki)</option>
+                        <option value="gt-Scots Gaelic">Scots Gaelic</option>
+                        <option value="gt-Sepedi">Sepedi</option>
+                        <option value="gt-Serbian">Serbian</option>
+                        <option value="gt-Sesotho">Sesotho</option>
+                        <option value="gt-Seychellois Creole">Seychellois Creole</option>
+                        <option value="gt-Shan">Shan</option>
+                        <option value="gt-Shona">Shona</option>
+                        <option value="gt-Sicilian">Sicilian</option>
+                        <option value="gt-Silesian">Silesian</option>
+                        <option value="gt-Sindhi">Sindhi</option>
+                        <option value="gt-Sinhala">Sinhala</option>
+                        <option value="gt-Slovak">Slovak</option>
+                        <option value="gt-Slovenian">Slovenian</option>
+                        <option value="gt-Somali">Somali</option>
+                        <option value="gt-Spanish">Spanish</option>
+                        <option value="gt-Sundanese">Sundanese</option>
+                        <option value="gt-Susu">Susu</option>
+                        <option value="gt-Swahili">Swahili</option>
+                        <option value="gt-Swati">Swati</option>
+                        <option value="gt-Swedish">Swedish</option>
+                        <option value="gt-Tahitian">Tahitian</option>
+                        <option value="gt-Tajik">Tajik</option>
+                        <option value="gt-Tamazight">Tamazight</option>
+                        <option value="gt-Tamazight (Tifinagh)">Tamazight (Tifinagh)</option>
+                        <option value="gt-Tamil">Tamil</option>
+                        <option value="gt-Tatar">Tatar</option>
+                        <option value="gt-Telugu">Telugu</option>
+                        <option value="gt-Tetum">Tetum</option>
+                        <option value="gt-Thai">Thai</option>
+                        <option value="gt-Tibetan">Tibetan</option>
+                        <option value="gt-Tigrinya">Tigrinya</option>
+                        <option value="gt-Tiv">Tiv</option>
+                        <option value="gt-Tok Pisin">Tok Pisin</option>
+                        <option value="gt-Tongan">Tongan</option>
+                        <option value="gt-Tshiluba">Tshiluba</option>
+                        <option value="gt-Tsonga">Tsonga</option>
+                        <option value="gt-Tswana">Tswana</option>
+                        <option value="gt-Tulu">Tulu</option>
+                        <option value="gt-Tumbuka">Tumbuka</option>
+                        <option value="gt-Turkish">Turkish</option>
+                        <option value="gt-Turkmen">Turkmen</option>
+                        <option value="gt-Tuvan">Tuvan</option>
+                        <option value="gt-Twi">Twi</option>
+                        <option value="gt-Udmurt">Udmurt</option>
+                        <option value="gt-Ukrainian">Ukrainian</option>
+                        <option value="gt-Urdu">Urdu</option>
+                        <option value="gt-Uyghur">Uyghur</option>
+                        <option value="gt-Uzbek">Uzbek</option>
+                        <option value="gt-Venda">Venda</option>
+                        <option value="gt-Venetian">Venetian</option>
+                        <option value="gt-Vietnamese">Vietnamese</option>
+                        <option value="gt-Waray">Waray</option>
+                        <option value="gt-Welsh">Welsh</option>
+                        <option value="gt-Wolof">Wolof</option>
+                        <option value="gt-Xhosa">Xhosa</option>
+                        <option value="gt-Yakut">Yakut</option>
+                        <option value="gt-Yiddish">Yiddish</option>
+                        <option value="gt-Yoruba">Yoruba</option>
+                        <option value="gt-Yucatec Maya">Yucatec Maya</option>
+                        <option value="gt-Zapotec">Zapotec</option>
+                        <option value="gt-Zulu">Zulu</option>
+                    </select>
+                    <div class="powered-by">Translation powered by Eburon AI</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <h1 class="text-gradient">EBURON</h1>
+            <p style="font-size: 28px; color: #fff; max-width: 700px; margin: 0 auto 40px;">
+                <span class="lang-nl">De intelligentie van morgen, gebouwd op de erfenis van gisteren.</span>
+                <span class="lang-en">The intelligence of tomorrow, built on the legacy of yesterday.</span>
+            </p>
+            <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 60px;">
+                <a href="https://eburon.ai" class="btn btn-primary">
+                    <span class="lang-nl">Probeer Eburon Cloud</span>
+                    <span class="lang-en">Try Eburon Cloud</span>
+                </a>
+                <a href="#local" class="btn" style="background: rgba(255,255,255,0.1); color: #fff;">
+                    <span class="lang-nl">Lokaal Draaien</span>
+                    <span class="lang-en">Run Locally</span>
+                </a>
+            </div>
+
+            <div class="chat-interface">
+                <div class="chat-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <span style="font-size: 12px; font-weight: 600; margin-left: 10px; color: #666;">Eburon Model
+                        v1.0</span>
+                </div>
+                <div class="chat-body">
+                    <div class="message user">
+                        <div class="bubble">
+                            <span class="lang-nl">Vat de erfenis van L&H samen in 1 zin.</span>
+                            <span class="lang-en">Summarize the legacy of L&H in one sentence.</span>
+                        </div>
+                    </div>
+                    <div class="message ai">
+                        <div class="bubble">
+                            <span class="lang-nl">Lernout & Hauspie pionierde in spraaksynthese en -herkenning, technologie die vandaag AI-toepassingen aandrijft van Siri tot semantische zoeksystemen.</span>
+                            <span class="lang-en">Lernout & Hauspie pioneered core speech synthesis and recognition technology that now powers modern AI, from Siri to semantic search.</span>
+                        </div>
+                    </div>
+                    <div class="message user">
+                        <div class="bubble">
+                            <span class="lang-nl">Genereer Python-code voor een spraakherkenningslus.</span>
+                            <span class="lang-en">Generate Python code for a speech recognition loop.</span>
+                        </div>
+                    </div>
+                    <div class="message ai">
+                        <div class="bubble">
+                            <span class="lang-nl">Hier is een eenvoudige implementatie met bestaande bibliotheken.<br><code>import speech_recognition as sr...</code></span>
+                            <span class="lang-en">Here is a simple implementation using existing libraries.<br><code>import speech_recognition as sr...</code></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="about" style="padding: 100px 0 20px;">
+        <div class="container">
+            <h2>
+                <span class="lang-nl">Over EBURON</span>
+                <span class="lang-en">About EBURON</span>
+            </h2>
+            <div class="card" style="margin-bottom: 30px;">
+                <div class="lang-nl">
+                    <p>Eburon LLM AI is 100 % eigendom van het bedrijf Ariolas BV. EBURON is een eigen AI platform en de EBURON Studio stelt ontwikkelaars in staat op zeer korte termijn zogenaamde conversationele agents te bouwen met superieure mensachtige gesprekken. Dank zij Eburon liggen de gebruikskosten een factor 3–5× lager in vergelijking met conversationele agents die gebaseerd zijn op grotere LLM’s.</p>
+                    <p>Eburon wordt ingezet om klantendiensten en call centers te automatiseren en/of om real-time vertaal oplossingen te bouwen die tolken vervangen. Eburon is erg compact en ‘on edge’ zodat de antwoordentijden tijdens het voeren van deze conversaties en vertalingen heel kort zijn, de agents kunnen onderbroken worden, en de conversaties kunnen gevoerd worden in honderden talen en dialecten.</p>
+                    <p>Deze Eburon conversationele agents en vertaaldiensten draaien op lokale servers, geen passages via de cloud nodig, en dus blijven de gegevens en de data van de eindgebruikers ‘binnen de muren’ van het bedrijf en is opperste privacy gegarandeerd.</p>
+                    <p>Integratie is plug-and-play, zodat teams snel live kunnen gaan zonder hun stack (architectuur) en data te herstructureren. De klant kan tevens gebruik maken van de in Eburon ingebouwde vibe voice coder en dus zelf eigen toepassingen verder toevoegen zonder te moeten coderen.</p>
+                    <p>Het Eburon No-Tokens-model maakt schaalbaarheid voorspelbaar en betaalbaar, waardoor groei mogelijk is zonder onverwachte pieken in gebruikskosten.</p>
+                </div>
+                <div class="lang-en">
+                    <p>Eburon LLM AI is 100% owned by Ariolas BV. EBURON is a proprietary AI platform, and the EBURON Studio allows developers to build so-called conversational agents with superior human-like conversations in a very short time. Thanks to Eburon, usage costs are typically 3-5x lower compared to conversational agents based on larger LLMs.</p>
+                    <p>Eburon is deployed to automate customer service and call centers and/or to build real-time translation solutions that replace human interpreters. Eburon is highly compact and operates 'on edge', ensuring that response times during these conversations and translations are extremely short, agents can be interrupted naturally, and conversations can be held in hundreds of languages and dialects.</p>
+                    <p>These Eburon conversational agents and translation services run on local servers. No cloud routing is required, meaning end-user data remains fully 'within the walls' of the company, guaranteeing supreme privacy.</p>
+                    <p>Integration is plug-and-play, allowing teams to go live quickly without restructuring their stack and data architecture. Customers can also utilize Eburon's built-in vibe voice coder to easily add more custom applications without having to write code.</p>
+                    <p>The Eburon No-Tokens model makes scaling predictable and affordable, enabling growth without unexpected spikes in usage costs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" style="padding: 120px 0;">
+        <div class="container">
+            <h2>
+                <span class="lang-nl">Belangrijkste Punten</span>
+                <span class="lang-en">Key Capabilities</span>
+            </h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 class="lang-nl">Edge Voorop</h3>
+                    <h3 class="lang-en">Edge First</h3>
+                    <p class="lang-nl">EBURON levert AI waar het de meeste waarde creëert: aan de rand (edge). Onze modellen draaien in een data-centrum met een kleine footprint (tot en met smartphones), zodat organisaties geavanceerde AI kunnen inzetten in fabrieken, vestigingen, voertuigen, veldkits en consumentenelektronica zonder afhankelijk te zijn van een hyperscale-cloud.</p>
+                    <p class="lang-en">EBURON delivers AI where it creates the most value: at the edge. Our models run in small-footprint data centers (down to smartphones), enabling enterprises to deploy advanced AI in factories, branches, vehicles, field kits, and consumer electronics without relying on a hyperscale cloud.</p>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">Energie & Latency</h3>
+                    <h3 class="lang-en">Energy & Latency</h3>
+                    <p class="lang-nl">Door lokaal te verwerken, realiseert EBURON een aanzienlijke vermindering van elektriciteits- en totale energieverbruik. Minder en kleinere datacenters betekenen lagere operationele kosten, minder koeling en een wezenlijk kleinere CO₂-voetafdruk, terwijl de latency ultra-laag blijft.</p>
+                    <p class="lang-en">Through local processing, EBURON significantly reduces electricity and overall energy consumption. Fewer and smaller data centers mean lower operational costs, reduced cooling needs, and a substantially smaller carbon footprint, all while maintaining ultra-low latency.</p>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">Direct Schaalbaar</h3>
+                    <h3 class="lang-en">Directly Scalable</h3>
+                    <p class="lang-nl">Schaalvergroting is direct en voorspelbaar. Capaciteit breidt uit door lichtgewicht edge-nodes toe te voegen; er zijn geen token-meters en lage, vaste gebruikskosten houden budgettering eenvoudig. Dit elimineert verrassende rekeningen en throttling die de adoptie van AI vertragen.</p>
+                    <p class="lang-en">Scaling is immediate and predictable. Capacity expands by adding lightweight edge nodes. There are no token meters, and low, fixed usage fees simplify budgeting. This eliminates surprise bills and rate throttling that generally slow down AI adoption.</p>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">Snelle Onboarding</h3>
+                    <h3 class="lang-en">Fast Onboarding</h3>
+                    <p class="lang-nl">Een ingebouwde conversatie-agent begeleidt beheerders en zakelijke gebruikers door de setup, dataverbinding, beleidsconfiguratie en testen, zodat teams binnen dagen — niet maanden — van pilot naar productie gaan.</p>
+                    <p class="lang-en">An embedded conversational agent guides administrators and business users through setup, data connections, policy configuration, and testing, enabling teams to move from pilot to production in days rather than months.</p>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">IQ en EQ</h3>
+                    <h3 class="lang-en">IQ and EQ</h3>
+                    <p class="lang-nl">De IQ en EQ van EBURON’s agents zijn ontworpen voor werk in de echte wereld: ze begrijpen nuance, context en toon en emoties, en kunnen gesprekken op menselijk niveau voeren die voldoen aan Turing-achtige evaluaties in meer dan 120 talen. Dit betekent betere self-service, hogere containment-percentages en tevredener klanten en medewerkers.</p>
+                    <p class="lang-en">The IQ and EQ of EBURON's agents are designed for real-world work: they understand nuance, context, tone, and emotion, delivering human-level interactions that pass Turing-style evaluations across over 120 languages. This leads to better self-service, higher containment rates, and happier customers and agents.</p>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">Studio & No-Code</h3>
+                    <h3 class="lang-en">Studio & No-Code</h3>
+                    <p class="lang-nl">Voor ontwikkelaars biedt EBURON Studio spraakgestuurde applicatiegeneratie zonder code. Ontwikkelaars en domeinexperts kunnen een workflow of vaardigheid in natuurlijke taal beschrijven en binnen enkele minuten productie-klare apps maken, waardoor de backlog sneller wordt weggewerkt en de time-to-value wordt versneld.</p>
+                    <p class="lang-en">For developers, EBURON Studio offers voice-driven, no-code application generation. Developers and domain experts can describe a workflow or skill in natural language, and create production-ready apps in minutes. This clears the backlog faster and accelerates time-to-value.</p>
+                </div>
+                <div class="card" style="grid-column: 1 / -1;">
+                    <h3 class="lang-nl">Absolute Beveiliging & Privacy</h3>
+                    <h3 class="lang-en">Absolute Security & Privacy</h3>
+                    <p class="lang-nl">Beveiliging en privacy zijn fundamenteel, niet optioneel. Standaard verlaat gegevens jouw omgeving nooit, geen cloud-deling, en het kan draaien op je eigen servers, inclusief on-premises voor bedrijven, de publieke sector en gereguleerde industrieën. Toegang wordt desgewenst nog extra end-to-end beschermd door EBURON’s eigen DYNCA cognitieve authenticatie voor continue en gebruik centrische verificatie, ontworpen om robuust te zijn tegen opkomende post-quantum-computer dreigingen.</p>
+                    <p class="lang-nl" style="margin-top: 20px; color: var(--foreground);"><strong>Kortom: EBURON laat je high-intelligence, meertalige AI aan de edge inzetten, energie en kosten verlagen, zonder frictie schalen, oplossingen bouwen via spraak, en data soeverein en veilig houden — zodat je sneller kunt bewegen met minder risico.</strong></p>
+                    
+                    <p class="lang-en">Security and privacy are fundamental, not optional. By default, data never leaves your environment. There is no cloud sharing, and it runs smoothly on your own servers, including on-premises operations for enterprises, public sectors, and regulated industries. Access can optionally be protected end-to-end via EBURON’s proprietary DYNCA cognitive authentication for continuous, user-centric verification, designed to be robust against emerging post-quantum computing threats.</p>
+                    <p class="lang-en" style="margin-top: 20px; color: var(--foreground);"><strong>In short: EBURON lets you deploy high-intelligence, multilingual AI at the edge, lower energy and costs, scale without friction, build solutions via voice, and keep data sovereign and secure — enabling you to move faster with far less risk.</strong></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="solutions" style="padding: 20px 0 120px;">
+        <div class="container">
+            <h2>
+                <span class="lang-nl">Oplossingen in Productie (door Ariolas BV)</span>
+                <span class="lang-en">Solutions in Production (by Ariolas BV)</span>
+            </h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Succes Classroom</h3>
+                    <div class="lang-nl">
+                        <p>Leraars die diverse opleidingen geven in verschillende soorten bedrijven gebruiken succes.eburon.ai classroom versies die deze leraars in staat stellen les te geven in hun eigen taal, terwijl elke leerling de vertaling real-time ontvangt op hun tablet en deze vertaling zien en ook horen, en desgewenst in hun eigen taal vragen kunnen stellen aan de leraar. Deze Eburon oplossing werkt zo goed dat live tolken in veel omstandigheden niet meer nodig zijn, wat een enorme kostenbesparing betekent.</p>
+                        <p>Deze nu afgewerkte succes classroom oplossing wordt door het bedrijf SuccesInvest (Otegem) gebruikt en verder verdeeld bij heel wat (grote !) bedrijven en organisaties in Belgie, Roemenia, Indonesia en Marokko, die hier dringend zaten op te wachten.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>Educators teaching various courses across different types of companies use the succes.eburon.ai classroom version. It allows teachers to instruct in their native language while each student receives real-time text and audio translations directly on their tablet. Students can even ask questions back in their own language. This Eburon solution works so well that live interpreters are no longer necessary in many scenarios, bringing immense cost savings.</p>
+                        <p>The finalized Succes classroom solution is used and distributed by SuccesInvest (Otegem) to various major companies and organizations in Belgium, Romania, Indonesia, and Morocco, heavily anticipating this product.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Dual Translator</h3>
+                    <div class="lang-nl">
+                        <p>Deze versie is een Eburon real-time vertaler, op 1 tablet of smartphone of laptop die tussen 2 personen gevoerd wordt, en waarbij elke spreker in zijn/haar eigen taal spreekt, en waarbij de andere spreker meteen de vertaling in zijn/haar taal ziet en hoort, en kan antwoorden in de eigen taal wat dan weer real-time vertaald wordt door de eerste spreker. Ideaal voor alle situaties waar personen zich aanbieden die de lokale taal niet of onvoldoende spreken, en een ingewikkeld onderwerp moet uitgelegd worden: apothekers, dokters, verzorgers, verpleegsters, stedelijke diensten, toerisme diensten, politie kantoren en verhoren, OCMW’s, uitzendkantoren, onthaal balies in ziekenhuizen, hotel recepties en conciërges, incheck balies, enz… kunnen hier handig en aan lage kost gebruik van maken, en het is aanzienlijk beter en handiger dan bv google translate.</p>
+                        <p><em>Classroom versie is tevens uitgewerkt als simultane vertaling voor grote conferenties en bijeenkomsten waar simultane vertaling nodig is, en waar live-tolken een enorme kost betekenen: dank zij Eburon kunnen deze (dure) live tolken deels vervangen worden.</em></p>
+                    </div>
+                    <div class="lang-en">
+                        <p>This module provides real-time dual translation utilizing a single tablet, smartphone, or laptop between two individuals. Each speaks in their own language, while the other instantly sees and hears the translation, allowing dynamic two-way natural conversations. It is perfect for complex scenarios with language barriers involving pharmacists, doctors, caretakers, nurses, city services, tourism, police interrogations, social welfare offices, temp agencies, hospital receptions, hotel concierges, check-in desks, etc. It provides a vastly superior and more convenient experience at low cost compared to standard tools like Google Translate.</p>
+                        <p><em>A simultaneous translation version of the Classroom suite is also available for large conferences, partially replacing the intense cost barrier of expensive human live interpreters.</em></p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3>Eburon zoom Orbitz</h3>
+                    <div class="lang-nl">
+                        <p>Een door Ariolas BV eigen gemaakte zoom en messaging systeem die toelaat te zoomen met deelnemers die elk elkaar zien, maar horen in hun eigen taal, in real-time. Deze oplossing is nu afgewerkt en kan in de markt gezet worden.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>A proprietary video conferencing and messaging system developed by Ariolas BV. It allows participants to see each other via a Zoom-like interface while listening to real-time audio translations in their respective native languages. This completed solution is now ready for the market.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 class="lang-nl">Automatisatie van klantendiensten en call-centers</h3>
+                    <h3 class="lang-en">Automation of customer service and call centers</h3>
+                    <div class="lang-nl">
+                        <p>Bemande klantendiensten in kleine en grote bedrijven en bij overheidsdiensten - al dan niet via call centers - kosten handenvol geld. Men mag in West-Europa rekenen op een jaarlijkse kostprijs van gemiddeld 60,000 EURO per bemande post, en die kan hoger oplopen indien 24/7 service aangeboden wordt. Bovendien kost de opleiding van dergelijke bemande diensten eveneens vele maanden en geld, en blijft er dan nog steeds het gebrek aan meertaligheid, en er is een grote turn-over vanwege de stress die deze personeelsleden of call center agents ondervinden. Klanten klagen bovendien dikwijls over de te lange wachttijden of onbereikbaarheid buiten de normale werkuren.</p>
+                        <p><strong>EBURON lost al deze problemen op:</strong> deze bemande diensten kunnen op zeer korte termijn voor 100 % ge-automatiseerd worden, met een 24/7 beschikbaarheid, in meer dan 120 talen en dialecten, met ‘mens-achtige’ conversaties. Ariolas BV biedt dergelijke volledig ontzorgde automatisering aan. Gegeven het non-tokens en on-the-edge voordeel van Eburon kan een package deal aangeboden worden, waarbij de totale exploitatie aan zeer lage kost kan verlopen, en de besparing die de klant daarmee bereikt heel hoog is. Eburon voor call center en klantendiensten is onmiddellijk beschikbaar.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p>Manned customer services across SMEs, large enterprises, and government services are incredibly expensive. In Western Europe, a single operational desk typically costs around 60,000 EUR annually, surging further for 24/7 operations. Training requires months of sunk time and capital. Multilingualism poses an ongoing hurdle, alongside massive employee turnover due to the stressful nature of call centers. Customers constantly complain about long hold times and limited after-hours accessibility.</p>
+                        <p><strong>EBURON resolves all these friction points:</strong> manned services can be 100% automated in a short timeframe, opening up 24/7 availability across over 120 languages and dialects with 'human-like' dialogue quality. Ariolas BV offers this as a fully managed automation package. Thanks to Eburon's tokenless, on-the-edge advantage, clients achieve tremendously low total operating costs while maximizing pure savings. Eburon for call center and customer service automation is available immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="local" style="padding: 100px 0; text-align: center;">
+        <div class="container">
+            <h2>
+                <span class="lang-nl">Draai lokaal</span>
+                <span class="lang-en">Run Locally</span>
+            </h2>
+            <p>
+                <span class="lang-nl">Ervaar EBURON direct in je terminal via Ollama.</span>
+                <span class="lang-en">Experience EBURON directly in your terminal via Ollama.</span>
+            </p>
+
+            <div class="code-snippet">
+                ollama run eburon/eburon
+            </div>
+
+            <p style="margin-top: 40px; font-size: 14px;">
+                <span class="lang-nl">Vereist een lokale Ollama-installatie.</span>
+                <span class="lang-en">Requires a local Ollama installation.</span>
+                <br>
+                <a href="https://ollama.com" style="color: var(--primary);">Download Ollama</a>
+            </p>
+        </div>
+    </section>
+    <footer>
+        <p>© 2026 Eburon AI. A Jo Lernout Initiative.</p>
+    </footer>
+
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const langCodes = {'Afrikaans': 'af', 'Albanian': 'sq', 'Amharic': 'am', 'Arabic': 'ar', 'Armenian': 'hy', 'Assamese': 'as', 'Aymara': 'ay', 'Azerbaijani': 'az', 'Bambara': 'bm', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bhojpuri': 'bho', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chinese (Simplified)': 'zh-CN', 'Chinese (Traditional)': 'zh-TW', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dhivehi': 'dv', 'Dogri': 'doi', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Ewe': 'ee', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Guarani': 'gn', 'Gujarati': 'gu', 'Haitian Creole': 'ht', 'Hausa': 'ha', 'Hawaiian': 'haw', 'Hebrew': 'iw', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Ilocano': 'ilo', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jv', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Kinyarwanda': 'rw', 'Konkani': 'gom', 'Korean': 'ko', 'Krio': 'kri', 'Kurdish': 'ku', 'Kurdish (Sorani)': 'ckb', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lingala': 'ln', 'Lithuanian': 'lt', 'Luganda': 'lg', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Maithili': 'mai', 'Malagasy': 'mg', 'Malay': 'ms', 'Malayalam': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Meiteilon (Manipuri)': 'mni-Mtei', 'Mizo': 'lus', 'Mongolian': 'mn', 'Myanmar (Burmese)': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Nyanja (Chichewa)': 'ny', 'Odia (Oriya)': 'or', 'Oromo': 'om', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese (Portugal)': 'pt-PT', 'Portuguese (Brazil)': 'pt', 'Punjabi': 'pa', 'Quechua': 'qu', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Sanskrit': 'sa', 'Scots Gaelic': 'gd', 'Sepedi': 'nso', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Tatar': 'tt', 'Telugu': 'te', 'Thai': 'th', 'Tigrinya': 'ti', 'Tsonga': 'ts', 'Turkish': 'tr', 'Turkmen': 'tk', 'Twi': 'ak', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'};
+
+        let translateTimer = null;
+
+        function setGoogTransCookie(value) {
+            document.cookie = `googtrans=${value}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function clearGoogTransCookie() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            if (window.location.hostname) {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function findTargetCode(langName, combo) {
+            const mappedCode = langCodes[langName] || '';
+            if (mappedCode && combo.querySelector(`option[value="${mappedCode}"]`)) {
+                return mappedCode;
+            }
+
+            const normalized = langName.trim().toLowerCase();
+            const byLabel = Array.from(combo.options).find(option =>
+                option.text.trim().toLowerCase() === normalized
+            );
+
+            return byLabel ? byLabel.value : mappedCode;
+        }
+
+        function applyGoogleTranslateLanguage(langName) {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            let attempts = 0;
+            translateTimer = setInterval(() => {
+                attempts += 1;
+                const combo = document.querySelector('.goog-te-combo');
+
+                if (combo) {
+                    const targetCode = findTargetCode(langName, combo);
+                    if (targetCode) {
+                        combo.value = targetCode;
+                        combo.dispatchEvent(new Event('change'));
+                        setGoogTransCookie(`/en/${targetCode}`);
+                        clearInterval(translateTimer);
+                        translateTimer = null;
+                        return;
+                    }
+                }
+
+                if (attempts >= 20) {
+                    clearInterval(translateTimer);
+                    translateTimer = null;
+                    console.warn(`Google Translate could not resolve language: ${langName}`);
+                }
+            }, 150);
+        }
+
+        function resetGoogleTranslateState() {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            const combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = '';
+                combo.dispatchEvent(new Event('change'));
+            }
+            clearGoogTransCookie();
+        }
+
+        function setLanguage(val) {
+            localStorage.setItem('eburon-lang', val);
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = val;
+            });
+
+            if (val === 'en' || val === 'nl') {
+                document.body.setAttribute('data-language', val);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (val.startsWith('gt-')) {
+                const langName = val.slice(3);
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(langName);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('eburon-lang') || 'en';
+
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = savedLang;
+            });
+
+            if (savedLang === 'en' || savedLang === 'nl') {
+                document.body.setAttribute('data-language', savedLang);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (savedLang.startsWith('gt-')) {
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(savedLang.slice(3));
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

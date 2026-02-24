@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jo Lernout | The Visionary Behind Speech Tech</title>
+    <style>
+        /* Premium Dark Visionary Theme - Apple Inspired */
+        :root {
+            --background: #000000;
+            --foreground: #f5f5f7;
+
+            /* Accents - Gold/Amber for "Visionary" feel, refined */
+            --primary: #f59e0b;
+            --primary-foreground: #000000;
+
+            --secondary: #1d1d1f;
+            --secondary-foreground: #f5f5f7;
+
+            --muted: #424245;
+            --muted-foreground: #86868b;
+
+            --accent: #1d1d1f;
+            --accent-foreground: #f5f5f7;
+
+            --border: #424245;
+            --radius: 18px;
+            /* Slightly more rounded for modern feel */
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            /* System font stack targets SF Pro on Apple devices */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--foreground);
+            background: var(--background);
+            font-feature-settings: "rlig" 1, "calt" 1;
+            line-height: 1.5;
+            font-size: 17px;
+            /* Apple body text size */
+            overflow-x: hidden;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--background);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--muted);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--muted-foreground);
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 980px;
+            /* Apple's typical max-width for content */
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .grid-4 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Typography - Apple Style */
+        h1,
+        h2,
+        h3 {
+            color: var(--foreground);
+            margin-top: 0;
+            letter-spacing: -0.015em;
+        }
+
+        h1 {
+            font-size: 56px;
+            line-height: 1.07143;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            margin-bottom: 0.4em;
+        }
+
+        h2 {
+            font-size: 40px;
+            line-height: 1.1;
+            font-weight: 700;
+            letter-spacing: 0em;
+            margin-bottom: 40px;
+            color: var(--foreground);
+            /* Apple headers are usually consistent color */
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 24px;
+            line-height: 1.16667;
+            font-weight: 600;
+            letter-spacing: .009em;
+            margin-bottom: 0.4em;
+        }
+
+        p {
+            font-size: 19px;
+            /* Larger, readable text like Apple landing pages */
+            line-height: 1.47059;
+            font-weight: 400;
+            letter-spacing: .011em;
+            color: #a1a1a6;
+            /* Softer text color */
+            margin-bottom: 1.2em;
+        }
+
+        strong {
+            color: var(--foreground);
+            font-weight: 600;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            /* Ensure gradient works */
+        }
+
+        /* Specific Classes */
+        .logo {
+            font-weight: 600;
+            font-size: 21px;
+            letter-spacing: -0.011em;
+            color: var(--foreground);
+        }
+
+        .hero-desc {
+            font-size: 24px;
+            line-height: 1.33333;
+            font-weight: 400;
+            letter-spacing: .009em;
+            color: #86868b;
+            margin-bottom: 40px;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            color: var(--muted-foreground);
+            font-size: 21px;
+            line-height: 1.381;
+            font-weight: 400;
+        }
+
+        .agent-status {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-family: monospace;
+            color: var(--primary);
+            font-size: 12px;
+            pointer-events: none;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
+        }
+
+        /* Components */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 17px;
+            line-height: 1.47059;
+            font-weight: 600;
+            letter-spacing: -.022em;
+            transition: all 0.3s cubic-bezier(0, 0, 0.5, 1);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: #fff;
+            color: #000;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            /* Very subtle */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border: none;
+            /* Apple rarely uses visible borders on cards */
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.02);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--foreground);
+        }
+
+        .card p {
+            font-size: 17px;
+            margin-bottom: 0;
+        }
+
+        .timeline-item {
+            background: transparent;
+            /* Cleaner look */
+            border-left: 2px solid var(--primary);
+            padding: 10px 0 10px 30px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -6px;
+            top: 24px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .quote-box {
+            font-size: 24px;
+            line-height: 1.4;
+            font-weight: 600;
+            font-style: normal;
+            text-align: center;
+            color: var(--foreground);
+            border: none;
+            padding: 40px;
+            margin: 60px 0;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: #86868b;
+            font-size: 12px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 1000;
+            height: 44px;
+            /* Apple standard nav height */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            /* Keep faint border */
+        }
+
+        .nav-content {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #e8e8ed;
+            text-decoration: none;
+            font-size: 12px;
+            /* Small, concise nav */
+            line-height: 1;
+            font-weight: 400;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding-top: 44px;
+            background: #000;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #did-agent-root {
+            width: 100%;
+            height: 600px;
+            /* Taller for impact */
+            background: #000;
+            border-radius: 24px;
+            overflow: hidden;
+            /* Apple-style shadow */
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Stats */
+        .stat-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.1;
+            letter-spacing: -0.003em;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 8px;
+            color: #86868b;
+        }
+
+        section {
+            padding: 120px 0;
+            /* More whitespace */
+            border-bottom: none;
+            /* Clean separation by space */
+        }
+
+        /* Hamburger Menu & Mobile Styles */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 20px;
+            height: 1px;
+            /* Thinner lines */
+            margin: 6px 0;
+            background-color: #e8e8ed;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger Active State (X shape) */
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 44px;
+                /* Below nav */
+                left: 0;
+                /* Change from right:0 to make it full width properly */
+                width: 100%;
+                height: calc(100vh - 44px);
+                background: #000;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                padding: 40px;
+                gap: 1rem;
+                transform: translateY(-100%);
+                /* Slide down */
+                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                opacity: 0;
+                /* Hide initially */
+                pointer-events: none;
+                z-index: 999;
+                box-sizing: border-box;
+                /* Fix padding issues */
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-links a {
+                font-size: 28px;
+                font-weight: 600;
+                color: #f5f5f7;
+                opacity: 0;
+                /* For stagger animation later if desired */
+                animation: fadeIn 0.5s forwards 0.2s;
+            }
+
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                }
+            }
+
+            /* Mobile Text Sizes */
+            h1 {
+                font-size: 40px;
+            }
+
+            h2 {
+                font-size: 32px;
+            }
+
+            .hero {
+                padding-top: 88px;
+                align-items: flex-start;
+                text-align: center;
+            }
+
+            .grid-2,
+            .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            #did-agent-root {
+                height: 400px;
+            }
+
+            .quote-box {
+                padding: 20px;
+                font-size: 20px;
+            }
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--primary);
+            margin-top: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            overflow-x: auto;
+        }
+    
+        /* Language Switcher */
+        body[data-language="en"] .lang-nl { display: none !important; }
+        body[data-language="nl"] .lang-en { display: none !important; }
+        
+        .lang-switcher-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 20px;
+        }
+        .lang-select {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .lang-select option {
+            background: #000;
+            color: #fff;
+        }
+        .powered-by {
+            font-size: 9px;
+            color: #86868b;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+</style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">JO LERNOUT</div>
+
+            <button class="hamburger" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <div class="nav-links">
+                <a href="#about">
+                    <span class="lang-nl">Over ons</span>
+                    <span class="lang-en">About</span>
+                </a>
+                <a href="#technology">
+                    <span class="lang-nl">Technologie</span>
+                    <span class="lang-en">Technology</span>
+                </a>
+                <a href="#drama">
+                    <span class="lang-nl">Het Grieks Drama</span>
+                    <span class="lang-en">The Greek Drama</span>
+                </a>
+                <a href="#legacy">
+                    <span class="lang-nl">Erfenis</span>
+                    <span class="lang-en">Legacy</span>
+                </a>
+                <a href="#future">
+                    <span class="lang-nl">De Toekomst</span>
+                    <span class="lang-en">The Future</span>
+                </a>
+                <a href="app.html" style="color: var(--primary); font-weight: 600;">Apps</a>
+                
+                <div class="lang-switcher-container">
+                    <select class="lang-select" title="Language Selection" aria-label="Language Option" onchange="setLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="nl">Dutch</option>
+                        <option value="gt-Flemish">Flemish</option>
+                        <option value="gt-Abkhaz">Abkhaz</option>
+                        <option value="gt-Acehnese">Acehnese</option>
+                        <option value="gt-Acholi">Acholi</option>
+                        <option value="gt-Afar">Afar</option>
+                        <option value="gt-Afrikaans">Afrikaans</option>
+                        <option value="gt-Albanian">Albanian</option>
+                        <option value="gt-Alur">Alur</option>
+                        <option value="gt-Amharic">Amharic</option>
+                        <option value="gt-Arabic">Arabic</option>
+                        <option value="gt-Armenian">Armenian</option>
+                        <option value="gt-Assamese">Assamese</option>
+                        <option value="gt-Avar">Avar</option>
+                        <option value="gt-Awadhi">Awadhi</option>
+                        <option value="gt-Aymara">Aymara</option>
+                        <option value="gt-Azerbaijani">Azerbaijani</option>
+                        <option value="gt-Balinese">Balinese</option>
+                        <option value="gt-Baluchi">Baluchi</option>
+                        <option value="gt-Bambara">Bambara</option>
+                        <option value="gt-Baoulé">Baoulé</option>
+                        <option value="gt-Bashkir">Bashkir</option>
+                        <option value="gt-Basque">Basque</option>
+                        <option value="gt-Batak Karo">Batak Karo</option>
+                        <option value="gt-Batak Simalungun">Batak Simalungun</option>
+                        <option value="gt-Batak Toba">Batak Toba</option>
+                        <option value="gt-Belarusian">Belarusian</option>
+                        <option value="gt-Bemba">Bemba</option>
+                        <option value="gt-Bengali">Bengali</option>
+                        <option value="gt-Betawi">Betawi</option>
+                        <option value="gt-Bhojpuri">Bhojpuri</option>
+                        <option value="gt-Bikol">Bikol</option>
+                        <option value="gt-Bosnian">Bosnian</option>
+                        <option value="gt-Breton">Breton</option>
+                        <option value="gt-Bulgarian">Bulgarian</option>
+                        <option value="gt-Buryat">Buryat</option>
+                        <option value="gt-Cantonese">Cantonese</option>
+                        <option value="gt-Catalan">Catalan</option>
+                        <option value="gt-Cebuano">Cebuano</option>
+                        <option value="gt-Chamorro">Chamorro</option>
+                        <option value="gt-Chechen">Chechen</option>
+                        <option value="gt-Chichewa">Chichewa</option>
+                        <option value="gt-Chinese (Simplified)">Chinese (Simplified)</option>
+                        <option value="gt-Chinese (Traditional)">Chinese (Traditional)</option>
+                        <option value="gt-Chuukese">Chuukese</option>
+                        <option value="gt-Chuvash">Chuvash</option>
+                        <option value="gt-Corsican">Corsican</option>
+                        <option value="gt-Crimean Tatar (Cyrillic)">Crimean Tatar (Cyrillic)</option>
+                        <option value="gt-Crimean Tatar (Latin)">Crimean Tatar (Latin)</option>
+                        <option value="gt-Croatian">Croatian</option>
+                        <option value="gt-Czech">Czech</option>
+                        <option value="gt-Danish">Danish</option>
+                        <option value="gt-Dari">Dari</option>
+                        <option value="gt-Dhivehi">Dhivehi</option>
+                        <option value="gt-Dinka">Dinka</option>
+                        <option value="gt-Dogri">Dogri</option>
+                        <option value="gt-Dombe">Dombe</option>
+                        <option value="gt-Dyula">Dyula</option>
+                        <option value="gt-Dzongkha">Dzongkha</option>
+                        <option value="gt-Esperanto">Esperanto</option>
+                        <option value="gt-Estonian">Estonian</option>
+                        <option value="gt-Ewe">Ewe</option>
+                        <option value="gt-Faroese">Faroese</option>
+                        <option value="gt-Fijian">Fijian</option>
+                        <option value="gt-Filipino">Filipino</option>
+                        <option value="gt-Finnish">Finnish</option>
+                        <option value="gt-Fon">Fon</option>
+                        <option value="gt-French">French</option>
+                        <option value="gt-French (Canada)">French (Canada)</option>
+                        <option value="gt-Frisian">Frisian</option>
+                        <option value="gt-Friulian">Friulian</option>
+                        <option value="gt-Fulani">Fulani</option>
+                        <option value="gt-Ga">Ga</option>
+                        <option value="gt-Galician">Galician</option>
+                        <option value="gt-Georgian">Georgian</option>
+                        <option value="gt-German">German</option>
+                        <option value="gt-Greek">Greek</option>
+                        <option value="gt-Guarani">Guarani</option>
+                        <option value="gt-Gujarati">Gujarati</option>
+                        <option value="gt-Haitian Creole">Haitian Creole</option>
+                        <option value="gt-Hakha Chin">Hakha Chin</option>
+                        <option value="gt-Hausa">Hausa</option>
+                        <option value="gt-Hawaiian">Hawaiian</option>
+                        <option value="gt-Hebrew">Hebrew</option>
+                        <option value="gt-Hiligaynon">Hiligaynon</option>
+                        <option value="gt-Hindi">Hindi</option>
+                        <option value="gt-Hmong">Hmong</option>
+                        <option value="gt-Hungarian">Hungarian</option>
+                        <option value="gt-Hunsrik">Hunsrik</option>
+                        <option value="gt-Iban">Iban</option>
+                        <option value="gt-Icelandic">Icelandic</option>
+                        <option value="gt-Igbo">Igbo</option>
+                        <option value="gt-Ilocano">Ilocano</option>
+                        <option value="gt-Indonesian">Indonesian</option>
+                        <option value="gt-Inuktut (Latin)">Inuktut (Latin)</option>
+                        <option value="gt-Inuktut (Syllabics)">Inuktut (Syllabics)</option>
+                        <option value="gt-Irish">Irish</option>
+                        <option value="gt-Italian">Italian</option>
+                        <option value="gt-Jamaican Patois">Jamaican Patois</option>
+                        <option value="gt-Japanese">Japanese</option>
+                        <option value="gt-Javanese">Javanese</option>
+                        <option value="gt-Jingpo">Jingpo</option>
+                        <option value="gt-Kalaallisut">Kalaallisut</option>
+                        <option value="gt-Kannada">Kannada</option>
+                        <option value="gt-Kanuri">Kanuri</option>
+                        <option value="gt-Kapampangan">Kapampangan</option>
+                        <option value="gt-Kazakh">Kazakh</option>
+                        <option value="gt-Khasi">Khasi</option>
+                        <option value="gt-Khmer">Khmer</option>
+                        <option value="gt-Kiga">Kiga</option>
+                        <option value="gt-Kikongo">Kikongo</option>
+                        <option value="gt-Kinyarwanda">Kinyarwanda</option>
+                        <option value="gt-Kituba">Kituba</option>
+                        <option value="gt-Kokborok">Kokborok</option>
+                        <option value="gt-Komi">Komi</option>
+                        <option value="gt-Konkani">Konkani</option>
+                        <option value="gt-Korean">Korean</option>
+                        <option value="gt-Krio">Krio</option>
+                        <option value="gt-Kurdish (Kurmanji)">Kurdish (Kurmanji)</option>
+                        <option value="gt-Kurdish (Sorani)">Kurdish (Sorani)</option>
+                        <option value="gt-Kyrgyz">Kyrgyz</option>
+                        <option value="gt-Lao">Lao</option>
+                        <option value="gt-Latgalian">Latgalian</option>
+                        <option value="gt-Latin">Latin</option>
+                        <option value="gt-Latvian">Latvian</option>
+                        <option value="gt-Ligurian">Ligurian</option>
+                        <option value="gt-Limburgish">Limburgish</option>
+                        <option value="gt-Lingala">Lingala</option>
+                        <option value="gt-Lithuanian">Lithuanian</option>
+                        <option value="gt-Lombard">Lombard</option>
+                        <option value="gt-Luganda">Luganda</option>
+                        <option value="gt-Luo">Luo</option>
+                        <option value="gt-Luxembourgish">Luxembourgish</option>
+                        <option value="gt-Macedonian">Macedonian</option>
+                        <option value="gt-Madurese">Madurese</option>
+                        <option value="gt-Maithili">Maithili</option>
+                        <option value="gt-Makassar">Makassar</option>
+                        <option value="gt-Malagasy">Malagasy</option>
+                        <option value="gt-Malay">Malay</option>
+                        <option value="gt-Malay (Jawi)">Malay (Jawi)</option>
+                        <option value="gt-Malayalam">Malayalam</option>
+                        <option value="gt-Maltese">Maltese</option>
+                        <option value="gt-Mam">Mam</option>
+                        <option value="gt-Manx">Manx</option>
+                        <option value="gt-Maori">Maori</option>
+                        <option value="gt-Marathi">Marathi</option>
+                        <option value="gt-Marshallese">Marshallese</option>
+                        <option value="gt-Marwadi">Marwadi</option>
+                        <option value="gt-Mauritian Creole">Mauritian Creole</option>
+                        <option value="gt-Meadow Mari">Meadow Mari</option>
+                        <option value="gt-Meiteilon (Manipuri)">Meiteilon (Manipuri)</option>
+                        <option value="gt-Minang">Minang</option>
+                        <option value="gt-Mizo">Mizo</option>
+                        <option value="gt-Mongolian">Mongolian</option>
+                        <option value="gt-Myanmar (Burmese)">Myanmar (Burmese)</option>
+                        <option value="gt-Nahuatl (Eastern Huasteca)">Nahuatl (Eastern Huasteca)</option>
+                        <option value="gt-Ndau">Ndau</option>
+                        <option value="gt-Ndebele (South)">Ndebele (South)</option>
+                        <option value="gt-Nepalbhasa (Newari)">Nepalbhasa (Newari)</option>
+                        <option value="gt-Nepali">Nepali</option>
+                        <option value="gt-NKo">NKo</option>
+                        <option value="gt-Norwegian">Norwegian</option>
+                        <option value="gt-Nuer">Nuer</option>
+                        <option value="gt-Occitan">Occitan</option>
+                        <option value="gt-Odia (Oriya)">Odia (Oriya)</option>
+                        <option value="gt-Oromo">Oromo</option>
+                        <option value="gt-Ossetian">Ossetian</option>
+                        <option value="gt-Pangasinan">Pangasinan</option>
+                        <option value="gt-Papiamento">Papiamento</option>
+                        <option value="gt-Pashto">Pashto</option>
+                        <option value="gt-Persian">Persian</option>
+                        <option value="gt-Polish">Polish</option>
+                        <option value="gt-Portuguese (Brazil)">Portuguese (Brazil)</option>
+                        <option value="gt-Portuguese (Portugal)">Portuguese (Portugal)</option>
+                        <option value="gt-Punjabi (Gurmukhi)">Punjabi (Gurmukhi)</option>
+                        <option value="gt-Punjabi (Shahmukhi)">Punjabi (Shahmukhi)</option>
+                        <option value="gt-Quechua">Quechua</option>
+                        <option value="gt-Qʼeqchiʼ">Qʼeqchiʼ</option>
+                        <option value="gt-Romani">Romani</option>
+                        <option value="gt-Romanian">Romanian</option>
+                        <option value="gt-Rundi">Rundi</option>
+                        <option value="gt-Russian">Russian</option>
+                        <option value="gt-Sami (North)">Sami (North)</option>
+                        <option value="gt-Samoan">Samoan</option>
+                        <option value="gt-Sango">Sango</option>
+                        <option value="gt-Sanskrit">Sanskrit</option>
+                        <option value="gt-Santali (Latin)">Santali (Latin)</option>
+                        <option value="gt-Santali (Ol Chiki)">Santali (Ol Chiki)</option>
+                        <option value="gt-Scots Gaelic">Scots Gaelic</option>
+                        <option value="gt-Sepedi">Sepedi</option>
+                        <option value="gt-Serbian">Serbian</option>
+                        <option value="gt-Sesotho">Sesotho</option>
+                        <option value="gt-Seychellois Creole">Seychellois Creole</option>
+                        <option value="gt-Shan">Shan</option>
+                        <option value="gt-Shona">Shona</option>
+                        <option value="gt-Sicilian">Sicilian</option>
+                        <option value="gt-Silesian">Silesian</option>
+                        <option value="gt-Sindhi">Sindhi</option>
+                        <option value="gt-Sinhala">Sinhala</option>
+                        <option value="gt-Slovak">Slovak</option>
+                        <option value="gt-Slovenian">Slovenian</option>
+                        <option value="gt-Somali">Somali</option>
+                        <option value="gt-Spanish">Spanish</option>
+                        <option value="gt-Sundanese">Sundanese</option>
+                        <option value="gt-Susu">Susu</option>
+                        <option value="gt-Swahili">Swahili</option>
+                        <option value="gt-Swati">Swati</option>
+                        <option value="gt-Swedish">Swedish</option>
+                        <option value="gt-Tahitian">Tahitian</option>
+                        <option value="gt-Tajik">Tajik</option>
+                        <option value="gt-Tamazight">Tamazight</option>
+                        <option value="gt-Tamazight (Tifinagh)">Tamazight (Tifinagh)</option>
+                        <option value="gt-Tamil">Tamil</option>
+                        <option value="gt-Tatar">Tatar</option>
+                        <option value="gt-Telugu">Telugu</option>
+                        <option value="gt-Tetum">Tetum</option>
+                        <option value="gt-Thai">Thai</option>
+                        <option value="gt-Tibetan">Tibetan</option>
+                        <option value="gt-Tigrinya">Tigrinya</option>
+                        <option value="gt-Tiv">Tiv</option>
+                        <option value="gt-Tok Pisin">Tok Pisin</option>
+                        <option value="gt-Tongan">Tongan</option>
+                        <option value="gt-Tshiluba">Tshiluba</option>
+                        <option value="gt-Tsonga">Tsonga</option>
+                        <option value="gt-Tswana">Tswana</option>
+                        <option value="gt-Tulu">Tulu</option>
+                        <option value="gt-Tumbuka">Tumbuka</option>
+                        <option value="gt-Turkish">Turkish</option>
+                        <option value="gt-Turkmen">Turkmen</option>
+                        <option value="gt-Tuvan">Tuvan</option>
+                        <option value="gt-Twi">Twi</option>
+                        <option value="gt-Udmurt">Udmurt</option>
+                        <option value="gt-Ukrainian">Ukrainian</option>
+                        <option value="gt-Urdu">Urdu</option>
+                        <option value="gt-Uyghur">Uyghur</option>
+                        <option value="gt-Uzbek">Uzbek</option>
+                        <option value="gt-Venda">Venda</option>
+                        <option value="gt-Venetian">Venetian</option>
+                        <option value="gt-Vietnamese">Vietnamese</option>
+                        <option value="gt-Waray">Waray</option>
+                        <option value="gt-Welsh">Welsh</option>
+                        <option value="gt-Wolof">Wolof</option>
+                        <option value="gt-Xhosa">Xhosa</option>
+                        <option value="gt-Yakut">Yakut</option>
+                        <option value="gt-Yiddish">Yiddish</option>
+                        <option value="gt-Yoruba">Yoruba</option>
+                        <option value="gt-Yucatec Maya">Yucatec Maya</option>
+                        <option value="gt-Zapotec">Zapotec</option>
+                        <option value="gt-Zulu">Zulu</option>
+                    </select>
+                    <div class="powered-by">Translation powered by Eburon AI</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="grid grid-2" style="align-items: center;">
+                <div>
+                    <h1 class="text-gradient">THE VISIONARY<br>BEHIND SPEECH TECH</h1>
+                    <p class="hero-desc">
+                        From a house in Dadizele to a $10 Billion Valuation. A story of innovation, ambition, and
+                        betrayal.
+                    </p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#drama" class="btn btn-primary">Read the Story</a>
+                        <a href="#technology" class="btn btn-secondary">The Tech</a>
+                    </div>
+                </div>
+
+                <div style="position: relative;">
+                    <div id="did-agent-root"></div>
+                    <div class="agent-status">
+                        AI AGENT: ACTIVE
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="https://agent.d-id.com/v2/index.js" data-mode="full"
+            data-client-key="Z29vZ2xlLW9hdXRoMnwxMDgyMTU0NzU5NzQ0MzM3NTA3NzQ6TzdtaVo2LTVfM1JQbnFtMnJ4NE9Z"
+            data-agent-id="v2_agt_iv3O6WY4" data-name="did-agent" data-monitor="true" data-target-id="did-agent-root">
+            </script>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <h2>The Origin & Vision</h2>
+            <div class="grid grid-2">
+                <div>
+                    <p>It started with a dream and a mortgage. In 1987, Pol Hauspie and I founded Lernout & Hauspie
+                        (L&H) in Ieper, Belgium. We didn't have capital, so I sold my house in Dadizele. We believed
+                        that computers could do more than calculate; we believed they could <strong>speak and
+                            listen</strong>.</p>
+                    <p>By late 1999, Microsoft, Intel and many others had thoroughly vetted our technology and found it
+                        to be world-class. Bill Gates himself visited Ieper and declared L&H the world leader in
+                        language technology.</p>
+                </div>
+                <div>
+                    <div class="card">
+                        <h3>A Global Ambition</h3>
+                        <p>Our goal was to bridge the gap between people and technology using natural language. We
+                            developed coding for 40 different languages simultaneously using our LDC (Language
+                            Development Companies) model—a franchising system that was later misunderstood and
+                            criminalized.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology">
+        <div class="container">
+            <h2>The Technology</h2>
+            <p class="section-intro">
+                Critics called it "baked air." The reality was 450+ patents and code that powers today's AI, including
+                Siri and Alexa.
+            </p>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Speech Synthesis (TTS)</h3>
+                    <p>Converting text into natural-sounding speech. We pioneered this for car navigation (Mercedes,
+                        BMW) and tools for the visually impaired. Today, this is the voice of your GPS.</p>
+                </div>
+                <div class="card">
+                    <h3>Speech Recognition</h3>
+                    <p>Converting spoken words into text. Used by doctors (Dragon Naturally Speaking) and the military.
+                        This tech is the direct ancestor of modern assistants like Siri.</p>
+                </div>
+                <div class="card">
+                    <h3>Speech Compression</h3>
+                    <p>The foundation for digital storage (Dictaphone) and later VOIP applications like Skype. We
+                        converted analog speech to highly compressed digital formats.</p>
+                </div>
+                <div class="card">
+                    <h3>Semantic Search / Data Mining</h3>
+                    <p>Searching for <em>concepts</em> rather than just keywords. Critical for intelligence agencies
+                        (CIA, NSA) to sift through massive amounts of intercepted data. Vantage Linguistics still uses
+                        this today.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="drama">
+        <div class="container">
+            <h2>The Greek Drama</h2>
+
+            <div class="timeline-item">
+                <h3>The Rise: A Threat to the Status Quo</h3>
+                <p>By 2000, L&H was worth over <span style="color: var(--primary);">$10 Billion</span>. We acquired
+                    <strong>Dragon</strong> and <strong>Dictaphone</strong> ($900M). We weren't just a Belgian startup
+                    anymore; we owned strategic assets used by the Pentagon and US intelligence. We had become a
+                    "Thousand-legged danger" to established US interests.
+                </p>
+            </div>
+
+            <div class="timeline-item">
+                <h3>The Fall: The Scorpion and the Frog</h3>
+                <p>The fall wasn't just caused by accounting errors in Korea. It was an orchestrated dismantling. When
+                    the crisis hit, we brought in "saviors" like John Duerden (former Dictaphone CEO) and Philippe
+                    Bodson.</p>
+                <p>Instead of saving the company, they acted like the Scorpion in the fable. Duerden collaborated with
+                    short-sellers. Bodson ignored a $400M rescue offer from Daimler Benz/Temic.</p>
+            </div>
+
+            <div class="quote-box">
+                "We were beaten not because our technology was fake, but because it was too valuable to remain in
+                foreign hands. Scansoft bought our assets for a measly $11 million. Later, Microsoft bought the
+                evolution of that tech (Nuance) for $20 billion."
+            </div>
+        </div>
+    </section>
+
+    <section id="legacy">
+        <div class="container">
+            <h2>The Legacy</h2>
+            <div class="grid grid-4" style="margin-bottom: 4rem;">
+                <div style="text-align: center;">
+                    <div class="stat-value">$16B+</div>
+                    <div class="stat-label">Nuance Sale</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-value">450+</div>
+                    <div class="stat-label">Patents</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-value">4B</div>
+                    <div class="stat-label">Devices Today</div>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-value">1987</div>
+                    <div class="stat-label">Founded</div>
+                </div>
+            </div>
+
+            <p>The media called it a fraud. But if it was fake, why did:</p>
+            <ul>
+                <li><strong>Microsoft</strong> invest $60 Million in 1997?</li>
+                <li><strong>Intel</strong> invest $30 Million in 1999?</li>
+                <li><strong>Bill Gates</strong> visit Ieper personally to declare us market leaders?</li>
+                <li><strong>Apple's Siri</strong> and <strong>Amazon's Alexa</strong> run on core technology derived
+                    from L&H?</li>
+            </ul>
+            <p>The tragic irony is that the LDC (Language Development Companies) model, which was criminalized, was
+                actually a valid franchising model to develop 40 languages simultaneously. We made mistakes in Korea,
+                but the company was solvable.</p>
+        </div>
+    </section>
+
+    <section id="future">
+        <div class="container">
+            <h2>
+                <span class="lang-nl">De Toekomst: Eburon</span>
+                <span class="lang-en">The Future: Eburon</span>
+            </h2>
+            <div class="grid grid-2" style="align-items: center;">
+                <div>
+                    <p class="lang-nl">De visie op natuurlijke taaltechnologie is niet gestopt. Ze is herboren.</p>
+                    <p class="lang-en">The vision of natural language technology did not end. It has been reborn.</p>
+                    <p class="lang-nl"><strong>Eburon</strong> is het nieuwe hoofdstuk en bouwt verder op de innovatie-erfenis in AI en spraaktechnologie.</p>
+                    <p class="lang-en"><strong>Eburon</strong> is the new chapter, continuing the legacy of innovation in AI and speech technology.</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="eburon.html" class="btn btn-primary">
+                            <span class="lang-nl">Ontdek Eburon AI</span>
+                            <span class="lang-en">Discover Eburon AI</span>
+                        </a>
+                        <a href="https://eburon.ai" class="btn btn-secondary" target="_blank" rel="noopener" rel="noopener noreferrer">
+                            <span class="lang-nl">Bezoek Corporate Site</span>
+                            <span class="lang-en">Visit Corporate Site</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3>
+                        <span class="lang-nl">De Intelligentie van Morgen</span>
+                        <span class="lang-en">The Intelligence of Tomorrow</span>
+                    </h3>
+                    <p class="lang-nl">Ervaar de volgende generatie van onze taaltechnologie: privaat, meertalig en contextbewust.</p>
+                    <p class="lang-en">Experience the next generation of our language technology: private, multilingual, and context-aware.</p>
+                    <a href="eburon.html" class="btn" style="margin-top: 20px; background: rgba(255,255,255,0.1); color: #fff;">
+                        <span class="lang-nl">Bekijk Mogelijkheden</span>
+                        <span class="lang-en">See Capabilities</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Jo Lernout. Navigate the history of speech technology.</p>
+        <p style="margin-top: 1rem; opacity: 0.6;">Based on the memoirs "De Ondergang van Lernout & Hauspie".</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.querySelector('.hamburger');
+            const navLinks = document.querySelector('.nav-links');
+            const links = document.querySelectorAll('.nav-links a');
+
+            if (hamburger) {
+                hamburger.addEventListener('click', () => {
+                    hamburger.classList.toggle('active');
+                    navLinks.classList.toggle('active');
+                    document.body.classList.toggle('no-scroll');
+                });
+            }
+
+            // Close menu when clicking a link
+            links.forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                });
+            });
+        });
+    </script>
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const langCodes = {'Afrikaans': 'af', 'Albanian': 'sq', 'Amharic': 'am', 'Arabic': 'ar', 'Armenian': 'hy', 'Assamese': 'as', 'Aymara': 'ay', 'Azerbaijani': 'az', 'Bambara': 'bm', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bhojpuri': 'bho', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chinese (Simplified)': 'zh-CN', 'Chinese (Traditional)': 'zh-TW', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dhivehi': 'dv', 'Dogri': 'doi', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Ewe': 'ee', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Guarani': 'gn', 'Gujarati': 'gu', 'Haitian Creole': 'ht', 'Hausa': 'ha', 'Hawaiian': 'haw', 'Hebrew': 'iw', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Ilocano': 'ilo', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jv', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Kinyarwanda': 'rw', 'Konkani': 'gom', 'Korean': 'ko', 'Krio': 'kri', 'Kurdish': 'ku', 'Kurdish (Sorani)': 'ckb', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lingala': 'ln', 'Lithuanian': 'lt', 'Luganda': 'lg', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Maithili': 'mai', 'Malagasy': 'mg', 'Malay': 'ms', 'Malayalam': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Meiteilon (Manipuri)': 'mni-Mtei', 'Mizo': 'lus', 'Mongolian': 'mn', 'Myanmar (Burmese)': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Nyanja (Chichewa)': 'ny', 'Odia (Oriya)': 'or', 'Oromo': 'om', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese (Portugal)': 'pt-PT', 'Portuguese (Brazil)': 'pt', 'Punjabi': 'pa', 'Quechua': 'qu', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Sanskrit': 'sa', 'Scots Gaelic': 'gd', 'Sepedi': 'nso', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Tatar': 'tt', 'Telugu': 'te', 'Thai': 'th', 'Tigrinya': 'ti', 'Tsonga': 'ts', 'Turkish': 'tr', 'Turkmen': 'tk', 'Twi': 'ak', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'};
+
+        let translateTimer = null;
+
+        function setGoogTransCookie(value) {
+            document.cookie = `googtrans=${value}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function clearGoogTransCookie() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            if (window.location.hostname) {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function findTargetCode(langName, combo) {
+            const mappedCode = langCodes[langName] || '';
+            if (mappedCode && combo.querySelector(`option[value="${mappedCode}"]`)) {
+                return mappedCode;
+            }
+
+            const normalized = langName.trim().toLowerCase();
+            const byLabel = Array.from(combo.options).find(option =>
+                option.text.trim().toLowerCase() === normalized
+            );
+
+            return byLabel ? byLabel.value : mappedCode;
+        }
+
+        function applyGoogleTranslateLanguage(langName) {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            let attempts = 0;
+            translateTimer = setInterval(() => {
+                attempts += 1;
+                const combo = document.querySelector('.goog-te-combo');
+
+                if (combo) {
+                    const targetCode = findTargetCode(langName, combo);
+                    if (targetCode) {
+                        combo.value = targetCode;
+                        combo.dispatchEvent(new Event('change'));
+                        setGoogTransCookie(`/en/${targetCode}`);
+                        clearInterval(translateTimer);
+                        translateTimer = null;
+                        return;
+                    }
+                }
+
+                if (attempts >= 20) {
+                    clearInterval(translateTimer);
+                    translateTimer = null;
+                    console.warn(`Google Translate could not resolve language: ${langName}`);
+                }
+            }, 150);
+        }
+
+        function resetGoogleTranslateState() {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            const combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = '';
+                combo.dispatchEvent(new Event('change'));
+            }
+            clearGoogTransCookie();
+        }
+
+        function setLanguage(val) {
+            localStorage.setItem('eburon-lang', val);
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = val;
+            });
+
+            if (val === 'en' || val === 'nl') {
+                document.body.setAttribute('data-language', val);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (val.startsWith('gt-')) {
+                const langName = val.slice(3);
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(langName);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('eburon-lang') || 'en';
+
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = savedLang;
+            });
+
+            if (savedLang === 'en' || savedLang === 'nl') {
+                document.body.setAttribute('data-language', savedLang);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (savedLang.startsWith('gt-')) {
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(savedLang.slice(3));
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

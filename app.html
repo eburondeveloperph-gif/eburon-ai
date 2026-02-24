@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eburon Ecosystem | The Vision Realized</title>
+    <style>
+        /* Premium Dark Visionary Theme - Apple Inspired */
+        :root {
+            --background: #000000;
+            --foreground: #f5f5f7;
+            --primary: #f59e0b;
+            --secondary: #1d1d1f;
+            --muted: #424245;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: var(--foreground);
+            background: var(--background);
+            line-height: 1.5;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+
+        /* Layout */
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Typography */
+        h1 {
+            font-size: 64px;
+            line-height: 1.05;
+            font-weight: 700;
+            margin: 0 0 0.2em;
+            letter-spacing: -0.015em;
+        }
+
+        h2 {
+            font-size: 40px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--foreground);
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+
+        p {
+            font-size: 19px;
+            line-height: 1.5;
+            color: #a1a1a6;
+            margin-bottom: 1.2em;
+            font-weight: 400;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #fbbf24, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-content {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 21px;
+            color: var(--foreground);
+            letter-spacing: -0.01em;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: #e8e8ed;
+            text-decoration: none;
+            font-size: 12px;
+            margin-left: 24px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .hero-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 30%, rgba(251, 191, 36, 0.1), transparent 60%);
+        }
+
+        /* App Cards */
+        .app-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .app-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        .app-card p {
+            font-size: 16px;
+            margin-bottom: 14px;
+        }
+
+        .icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .lang-label {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 999px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            font-weight: 700;
+            background: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+            margin-right: 8px;
+        }
+
+        .app-footer {
+            margin-top: auto;
+            padding-top: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 980px;
+            font-size: 15px;
+            font-weight: 600;
+            background: #fff;
+            color: #000;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.02);
+        }
+
+        .btn.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid #333;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+        }
+    
+        /* Language Switcher */
+        body[data-language="en"] .lang-nl { display: none !important; }
+        body[data-language="nl"] .lang-en { display: none !important; }
+        
+        .lang-switcher-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            margin-left: 20px;
+        }
+        .lang-select {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        .lang-select option {
+            background: #000;
+            color: #fff;
+        }
+        .powered-by {
+            font-size: 9px;
+            color: #86868b;
+            margin-top: 4px;
+            letter-spacing: 0.02em;
+        }
+</style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">JO LERNOUT</a>
+            <div class="nav-links">
+                <a href="index.html">The Story</a>
+                <a href="eburon.html">Eburon AI</a>
+                <a href="app.html" style="color: #fff; opacity: 1;">Apps</a>
+                <div class="lang-switcher-container">
+                    <select class="lang-select" title="Language Selection" aria-label="Language Option" onchange="setLanguage(this.value)">
+                        <option value="en">English</option>
+                        <option value="nl">Dutch</option>
+                        <option value="gt-Flemish">Flemish</option>
+                        <option value="gt-Abkhaz">Abkhaz</option>
+                        <option value="gt-Acehnese">Acehnese</option>
+                        <option value="gt-Acholi">Acholi</option>
+                        <option value="gt-Afar">Afar</option>
+                        <option value="gt-Afrikaans">Afrikaans</option>
+                        <option value="gt-Albanian">Albanian</option>
+                        <option value="gt-Alur">Alur</option>
+                        <option value="gt-Amharic">Amharic</option>
+                        <option value="gt-Arabic">Arabic</option>
+                        <option value="gt-Armenian">Armenian</option>
+                        <option value="gt-Assamese">Assamese</option>
+                        <option value="gt-Avar">Avar</option>
+                        <option value="gt-Awadhi">Awadhi</option>
+                        <option value="gt-Aymara">Aymara</option>
+                        <option value="gt-Azerbaijani">Azerbaijani</option>
+                        <option value="gt-Balinese">Balinese</option>
+                        <option value="gt-Baluchi">Baluchi</option>
+                        <option value="gt-Bambara">Bambara</option>
+                        <option value="gt-Baoulé">Baoulé</option>
+                        <option value="gt-Bashkir">Bashkir</option>
+                        <option value="gt-Basque">Basque</option>
+                        <option value="gt-Batak Karo">Batak Karo</option>
+                        <option value="gt-Batak Simalungun">Batak Simalungun</option>
+                        <option value="gt-Batak Toba">Batak Toba</option>
+                        <option value="gt-Belarusian">Belarusian</option>
+                        <option value="gt-Bemba">Bemba</option>
+                        <option value="gt-Bengali">Bengali</option>
+                        <option value="gt-Betawi">Betawi</option>
+                        <option value="gt-Bhojpuri">Bhojpuri</option>
+                        <option value="gt-Bikol">Bikol</option>
+                        <option value="gt-Bosnian">Bosnian</option>
+                        <option value="gt-Breton">Breton</option>
+                        <option value="gt-Bulgarian">Bulgarian</option>
+                        <option value="gt-Buryat">Buryat</option>
+                        <option value="gt-Cantonese">Cantonese</option>
+                        <option value="gt-Catalan">Catalan</option>
+                        <option value="gt-Cebuano">Cebuano</option>
+                        <option value="gt-Chamorro">Chamorro</option>
+                        <option value="gt-Chechen">Chechen</option>
+                        <option value="gt-Chichewa">Chichewa</option>
+                        <option value="gt-Chinese (Simplified)">Chinese (Simplified)</option>
+                        <option value="gt-Chinese (Traditional)">Chinese (Traditional)</option>
+                        <option value="gt-Chuukese">Chuukese</option>
+                        <option value="gt-Chuvash">Chuvash</option>
+                        <option value="gt-Corsican">Corsican</option>
+                        <option value="gt-Crimean Tatar (Cyrillic)">Crimean Tatar (Cyrillic)</option>
+                        <option value="gt-Crimean Tatar (Latin)">Crimean Tatar (Latin)</option>
+                        <option value="gt-Croatian">Croatian</option>
+                        <option value="gt-Czech">Czech</option>
+                        <option value="gt-Danish">Danish</option>
+                        <option value="gt-Dari">Dari</option>
+                        <option value="gt-Dhivehi">Dhivehi</option>
+                        <option value="gt-Dinka">Dinka</option>
+                        <option value="gt-Dogri">Dogri</option>
+                        <option value="gt-Dombe">Dombe</option>
+                        <option value="gt-Dyula">Dyula</option>
+                        <option value="gt-Dzongkha">Dzongkha</option>
+                        <option value="gt-Esperanto">Esperanto</option>
+                        <option value="gt-Estonian">Estonian</option>
+                        <option value="gt-Ewe">Ewe</option>
+                        <option value="gt-Faroese">Faroese</option>
+                        <option value="gt-Fijian">Fijian</option>
+                        <option value="gt-Filipino">Filipino</option>
+                        <option value="gt-Finnish">Finnish</option>
+                        <option value="gt-Fon">Fon</option>
+                        <option value="gt-French">French</option>
+                        <option value="gt-French (Canada)">French (Canada)</option>
+                        <option value="gt-Frisian">Frisian</option>
+                        <option value="gt-Friulian">Friulian</option>
+                        <option value="gt-Fulani">Fulani</option>
+                        <option value="gt-Ga">Ga</option>
+                        <option value="gt-Galician">Galician</option>
+                        <option value="gt-Georgian">Georgian</option>
+                        <option value="gt-German">German</option>
+                        <option value="gt-Greek">Greek</option>
+                        <option value="gt-Guarani">Guarani</option>
+                        <option value="gt-Gujarati">Gujarati</option>
+                        <option value="gt-Haitian Creole">Haitian Creole</option>
+                        <option value="gt-Hakha Chin">Hakha Chin</option>
+                        <option value="gt-Hausa">Hausa</option>
+                        <option value="gt-Hawaiian">Hawaiian</option>
+                        <option value="gt-Hebrew">Hebrew</option>
+                        <option value="gt-Hiligaynon">Hiligaynon</option>
+                        <option value="gt-Hindi">Hindi</option>
+                        <option value="gt-Hmong">Hmong</option>
+                        <option value="gt-Hungarian">Hungarian</option>
+                        <option value="gt-Hunsrik">Hunsrik</option>
+                        <option value="gt-Iban">Iban</option>
+                        <option value="gt-Icelandic">Icelandic</option>
+                        <option value="gt-Igbo">Igbo</option>
+                        <option value="gt-Ilocano">Ilocano</option>
+                        <option value="gt-Indonesian">Indonesian</option>
+                        <option value="gt-Inuktut (Latin)">Inuktut (Latin)</option>
+                        <option value="gt-Inuktut (Syllabics)">Inuktut (Syllabics)</option>
+                        <option value="gt-Irish">Irish</option>
+                        <option value="gt-Italian">Italian</option>
+                        <option value="gt-Jamaican Patois">Jamaican Patois</option>
+                        <option value="gt-Japanese">Japanese</option>
+                        <option value="gt-Javanese">Javanese</option>
+                        <option value="gt-Jingpo">Jingpo</option>
+                        <option value="gt-Kalaallisut">Kalaallisut</option>
+                        <option value="gt-Kannada">Kannada</option>
+                        <option value="gt-Kanuri">Kanuri</option>
+                        <option value="gt-Kapampangan">Kapampangan</option>
+                        <option value="gt-Kazakh">Kazakh</option>
+                        <option value="gt-Khasi">Khasi</option>
+                        <option value="gt-Khmer">Khmer</option>
+                        <option value="gt-Kiga">Kiga</option>
+                        <option value="gt-Kikongo">Kikongo</option>
+                        <option value="gt-Kinyarwanda">Kinyarwanda</option>
+                        <option value="gt-Kituba">Kituba</option>
+                        <option value="gt-Kokborok">Kokborok</option>
+                        <option value="gt-Komi">Komi</option>
+                        <option value="gt-Konkani">Konkani</option>
+                        <option value="gt-Korean">Korean</option>
+                        <option value="gt-Krio">Krio</option>
+                        <option value="gt-Kurdish (Kurmanji)">Kurdish (Kurmanji)</option>
+                        <option value="gt-Kurdish (Sorani)">Kurdish (Sorani)</option>
+                        <option value="gt-Kyrgyz">Kyrgyz</option>
+                        <option value="gt-Lao">Lao</option>
+                        <option value="gt-Latgalian">Latgalian</option>
+                        <option value="gt-Latin">Latin</option>
+                        <option value="gt-Latvian">Latvian</option>
+                        <option value="gt-Ligurian">Ligurian</option>
+                        <option value="gt-Limburgish">Limburgish</option>
+                        <option value="gt-Lingala">Lingala</option>
+                        <option value="gt-Lithuanian">Lithuanian</option>
+                        <option value="gt-Lombard">Lombard</option>
+                        <option value="gt-Luganda">Luganda</option>
+                        <option value="gt-Luo">Luo</option>
+                        <option value="gt-Luxembourgish">Luxembourgish</option>
+                        <option value="gt-Macedonian">Macedonian</option>
+                        <option value="gt-Madurese">Madurese</option>
+                        <option value="gt-Maithili">Maithili</option>
+                        <option value="gt-Makassar">Makassar</option>
+                        <option value="gt-Malagasy">Malagasy</option>
+                        <option value="gt-Malay">Malay</option>
+                        <option value="gt-Malay (Jawi)">Malay (Jawi)</option>
+                        <option value="gt-Malayalam">Malayalam</option>
+                        <option value="gt-Maltese">Maltese</option>
+                        <option value="gt-Mam">Mam</option>
+                        <option value="gt-Manx">Manx</option>
+                        <option value="gt-Maori">Maori</option>
+                        <option value="gt-Marathi">Marathi</option>
+                        <option value="gt-Marshallese">Marshallese</option>
+                        <option value="gt-Marwadi">Marwadi</option>
+                        <option value="gt-Mauritian Creole">Mauritian Creole</option>
+                        <option value="gt-Meadow Mari">Meadow Mari</option>
+                        <option value="gt-Meiteilon (Manipuri)">Meiteilon (Manipuri)</option>
+                        <option value="gt-Minang">Minang</option>
+                        <option value="gt-Mizo">Mizo</option>
+                        <option value="gt-Mongolian">Mongolian</option>
+                        <option value="gt-Myanmar (Burmese)">Myanmar (Burmese)</option>
+                        <option value="gt-Nahuatl (Eastern Huasteca)">Nahuatl (Eastern Huasteca)</option>
+                        <option value="gt-Ndau">Ndau</option>
+                        <option value="gt-Ndebele (South)">Ndebele (South)</option>
+                        <option value="gt-Nepalbhasa (Newari)">Nepalbhasa (Newari)</option>
+                        <option value="gt-Nepali">Nepali</option>
+                        <option value="gt-NKo">NKo</option>
+                        <option value="gt-Norwegian">Norwegian</option>
+                        <option value="gt-Nuer">Nuer</option>
+                        <option value="gt-Occitan">Occitan</option>
+                        <option value="gt-Odia (Oriya)">Odia (Oriya)</option>
+                        <option value="gt-Oromo">Oromo</option>
+                        <option value="gt-Ossetian">Ossetian</option>
+                        <option value="gt-Pangasinan">Pangasinan</option>
+                        <option value="gt-Papiamento">Papiamento</option>
+                        <option value="gt-Pashto">Pashto</option>
+                        <option value="gt-Persian">Persian</option>
+                        <option value="gt-Polish">Polish</option>
+                        <option value="gt-Portuguese (Brazil)">Portuguese (Brazil)</option>
+                        <option value="gt-Portuguese (Portugal)">Portuguese (Portugal)</option>
+                        <option value="gt-Punjabi (Gurmukhi)">Punjabi (Gurmukhi)</option>
+                        <option value="gt-Punjabi (Shahmukhi)">Punjabi (Shahmukhi)</option>
+                        <option value="gt-Quechua">Quechua</option>
+                        <option value="gt-Qʼeqchiʼ">Qʼeqchiʼ</option>
+                        <option value="gt-Romani">Romani</option>
+                        <option value="gt-Romanian">Romanian</option>
+                        <option value="gt-Rundi">Rundi</option>
+                        <option value="gt-Russian">Russian</option>
+                        <option value="gt-Sami (North)">Sami (North)</option>
+                        <option value="gt-Samoan">Samoan</option>
+                        <option value="gt-Sango">Sango</option>
+                        <option value="gt-Sanskrit">Sanskrit</option>
+                        <option value="gt-Santali (Latin)">Santali (Latin)</option>
+                        <option value="gt-Santali (Ol Chiki)">Santali (Ol Chiki)</option>
+                        <option value="gt-Scots Gaelic">Scots Gaelic</option>
+                        <option value="gt-Sepedi">Sepedi</option>
+                        <option value="gt-Serbian">Serbian</option>
+                        <option value="gt-Sesotho">Sesotho</option>
+                        <option value="gt-Seychellois Creole">Seychellois Creole</option>
+                        <option value="gt-Shan">Shan</option>
+                        <option value="gt-Shona">Shona</option>
+                        <option value="gt-Sicilian">Sicilian</option>
+                        <option value="gt-Silesian">Silesian</option>
+                        <option value="gt-Sindhi">Sindhi</option>
+                        <option value="gt-Sinhala">Sinhala</option>
+                        <option value="gt-Slovak">Slovak</option>
+                        <option value="gt-Slovenian">Slovenian</option>
+                        <option value="gt-Somali">Somali</option>
+                        <option value="gt-Spanish">Spanish</option>
+                        <option value="gt-Sundanese">Sundanese</option>
+                        <option value="gt-Susu">Susu</option>
+                        <option value="gt-Swahili">Swahili</option>
+                        <option value="gt-Swati">Swati</option>
+                        <option value="gt-Swedish">Swedish</option>
+                        <option value="gt-Tahitian">Tahitian</option>
+                        <option value="gt-Tajik">Tajik</option>
+                        <option value="gt-Tamazight">Tamazight</option>
+                        <option value="gt-Tamazight (Tifinagh)">Tamazight (Tifinagh)</option>
+                        <option value="gt-Tamil">Tamil</option>
+                        <option value="gt-Tatar">Tatar</option>
+                        <option value="gt-Telugu">Telugu</option>
+                        <option value="gt-Tetum">Tetum</option>
+                        <option value="gt-Thai">Thai</option>
+                        <option value="gt-Tibetan">Tibetan</option>
+                        <option value="gt-Tigrinya">Tigrinya</option>
+                        <option value="gt-Tiv">Tiv</option>
+                        <option value="gt-Tok Pisin">Tok Pisin</option>
+                        <option value="gt-Tongan">Tongan</option>
+                        <option value="gt-Tshiluba">Tshiluba</option>
+                        <option value="gt-Tsonga">Tsonga</option>
+                        <option value="gt-Tswana">Tswana</option>
+                        <option value="gt-Tulu">Tulu</option>
+                        <option value="gt-Tumbuka">Tumbuka</option>
+                        <option value="gt-Turkish">Turkish</option>
+                        <option value="gt-Turkmen">Turkmen</option>
+                        <option value="gt-Tuvan">Tuvan</option>
+                        <option value="gt-Twi">Twi</option>
+                        <option value="gt-Udmurt">Udmurt</option>
+                        <option value="gt-Ukrainian">Ukrainian</option>
+                        <option value="gt-Urdu">Urdu</option>
+                        <option value="gt-Uyghur">Uyghur</option>
+                        <option value="gt-Uzbek">Uzbek</option>
+                        <option value="gt-Venda">Venda</option>
+                        <option value="gt-Venetian">Venetian</option>
+                        <option value="gt-Vietnamese">Vietnamese</option>
+                        <option value="gt-Waray">Waray</option>
+                        <option value="gt-Welsh">Welsh</option>
+                        <option value="gt-Wolof">Wolof</option>
+                        <option value="gt-Xhosa">Xhosa</option>
+                        <option value="gt-Yakut">Yakut</option>
+                        <option value="gt-Yiddish">Yiddish</option>
+                        <option value="gt-Yoruba">Yoruba</option>
+                        <option value="gt-Yucatec Maya">Yucatec Maya</option>
+                        <option value="gt-Zapotec">Zapotec</option>
+                        <option value="gt-Zulu">Zulu</option>
+                    </select>
+                    <div class="powered-by">Translation powered by Eburon AI</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <h1 class="text-gradient">The Vision Realized</h1>
+            <p style="font-size: 24px; color: #fff; max-width: 700px; margin: 0 auto;">
+                <span class="lang-nl">Technologie die taalbarrières doorbreekt, zoals Jo Lernout zich in 1987 voorstelde.</span>
+                <span class="lang-en">Technology that breaks language barriers, just as Jo Lernout envisioned in 1987.</span>
+            </p>
+        </div>
+    </header>
+
+    <section style="padding: 0 0 120px;">
+        <div class="container">
+            <div class="grid grid-3">
+
+                <!-- Orbitz -->
+                <div class="app-card">
+                    <div class="icon">🪐</div>
+                    <h3>Orbitz</h3>
+                    <div class="lang-nl">
+                        <p><strong>Real-time vertaling voor vergaderingen.</strong></p>
+                        <p>Orbitz laat deelnemers elkaar zien en toch in hun eigen taal horen, met directe vertaling tijdens videovergaderingen en messaging.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p><strong>Real-time meeting translation.</strong></p>
+                        <p>Orbitz lets participants see one another while hearing conversations in their own language, with instant translation for meetings and messaging.</p>
+                    </div>
+                    <div class="app-footer">
+                        <a href="https://orbitz.eburon.ai/" target="_blank" rel="noopener" class="btn">Launch App</a>
+                    </div>
+                </div>
+
+                <!-- DualTranslate -->
+                <div class="app-card">
+                    <div class="icon">🔄</div>
+                    <h3>DualTranslate</h3>
+                    <div class="lang-nl">
+                        <p><strong>Voor fysieke loketten en gesprekken.</strong></p>
+                        <p>Ideaal voor ziekenhuizen, hotels, stadsdiensten en politiediensten: twee mensen spreken elk hun eigen taal en krijgen onmiddellijk vertaling in tekst en audio.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p><strong>For physical service points.</strong></p>
+                        <p>Built for hospitals, hotels, city services, and police desks: both speakers use their own language and get instant translated text and speech.</p>
+                    </div>
+                    <div class="app-footer">
+                        <a href="https://dualtranslate.eburon.ai/" target="_blank" rel="noopener" class="btn">Launch App</a>
+                    </div>
+                </div>
+
+                <!-- Succes -->
+                <div class="app-card">
+                    <div class="icon">🎓</div>
+                    <h3>Succes</h3>
+                    <div class="lang-nl">
+                        <p><strong>Duidelijkheid in de klas.</strong></p>
+                        <p>Leraren geven les in hun eigen taal, terwijl leerlingen real-time vertaling ontvangen op tablet of laptop en vragen kunnen stellen in hun moedertaal.</p>
+                    </div>
+                    <div class="lang-en">
+                        <p><strong>Clarity in the classroom.</strong></p>
+                        <p>Teachers teach in their own language while students receive real-time translation on tablet or laptop and can ask questions in their native language.</p>
+                    </div>
+                    <div class="app-footer">
+                        <a href="https://succes.eburon.ai/" target="_blank" rel="noopener" class="btn">Launch App</a>
+                    </div>
+                </div></div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Eburon AI. A Jo Lernout Initiative.</p>
+    </footer>
+
+
+    <!-- Google Translate Element -->
+    <div id="google_translate_element" style="display:none;"></div>
+    
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script>
+        const langCodes = {'Afrikaans': 'af', 'Albanian': 'sq', 'Amharic': 'am', 'Arabic': 'ar', 'Armenian': 'hy', 'Assamese': 'as', 'Aymara': 'ay', 'Azerbaijani': 'az', 'Bambara': 'bm', 'Basque': 'eu', 'Belarusian': 'be', 'Bengali': 'bn', 'Bhojpuri': 'bho', 'Bosnian': 'bs', 'Bulgarian': 'bg', 'Catalan': 'ca', 'Cebuano': 'ceb', 'Chinese (Simplified)': 'zh-CN', 'Chinese (Traditional)': 'zh-TW', 'Corsican': 'co', 'Croatian': 'hr', 'Czech': 'cs', 'Danish': 'da', 'Dhivehi': 'dv', 'Dogri': 'doi', 'Dutch': 'nl', 'English': 'en', 'Esperanto': 'eo', 'Estonian': 'et', 'Ewe': 'ee', 'Filipino': 'tl', 'Finnish': 'fi', 'French': 'fr', 'Frisian': 'fy', 'Galician': 'gl', 'Georgian': 'ka', 'German': 'de', 'Greek': 'el', 'Guarani': 'gn', 'Gujarati': 'gu', 'Haitian Creole': 'ht', 'Hausa': 'ha', 'Hawaiian': 'haw', 'Hebrew': 'iw', 'Hindi': 'hi', 'Hmong': 'hmn', 'Hungarian': 'hu', 'Icelandic': 'is', 'Igbo': 'ig', 'Ilocano': 'ilo', 'Indonesian': 'id', 'Irish': 'ga', 'Italian': 'it', 'Japanese': 'ja', 'Javanese': 'jv', 'Kannada': 'kn', 'Kazakh': 'kk', 'Khmer': 'km', 'Kinyarwanda': 'rw', 'Konkani': 'gom', 'Korean': 'ko', 'Krio': 'kri', 'Kurdish': 'ku', 'Kurdish (Sorani)': 'ckb', 'Kyrgyz': 'ky', 'Lao': 'lo', 'Latin': 'la', 'Latvian': 'lv', 'Lingala': 'ln', 'Lithuanian': 'lt', 'Luganda': 'lg', 'Luxembourgish': 'lb', 'Macedonian': 'mk', 'Maithili': 'mai', 'Malagasy': 'mg', 'Malay': 'ms', 'Malayalam': 'ml', 'Maltese': 'mt', 'Maori': 'mi', 'Marathi': 'mr', 'Meiteilon (Manipuri)': 'mni-Mtei', 'Mizo': 'lus', 'Mongolian': 'mn', 'Myanmar (Burmese)': 'my', 'Nepali': 'ne', 'Norwegian': 'no', 'Nyanja (Chichewa)': 'ny', 'Odia (Oriya)': 'or', 'Oromo': 'om', 'Pashto': 'ps', 'Persian': 'fa', 'Polish': 'pl', 'Portuguese (Portugal)': 'pt-PT', 'Portuguese (Brazil)': 'pt', 'Punjabi': 'pa', 'Quechua': 'qu', 'Romanian': 'ro', 'Russian': 'ru', 'Samoan': 'sm', 'Sanskrit': 'sa', 'Scots Gaelic': 'gd', 'Sepedi': 'nso', 'Serbian': 'sr', 'Sesotho': 'st', 'Shona': 'sn', 'Sindhi': 'sd', 'Sinhala': 'si', 'Slovak': 'sk', 'Slovenian': 'sl', 'Somali': 'so', 'Spanish': 'es', 'Sundanese': 'su', 'Swahili': 'sw', 'Swedish': 'sv', 'Tajik': 'tg', 'Tamil': 'ta', 'Tatar': 'tt', 'Telugu': 'te', 'Thai': 'th', 'Tigrinya': 'ti', 'Tsonga': 'ts', 'Turkish': 'tr', 'Turkmen': 'tk', 'Twi': 'ak', 'Ukrainian': 'uk', 'Urdu': 'ur', 'Uyghur': 'ug', 'Uzbek': 'uz', 'Vietnamese': 'vi', 'Welsh': 'cy', 'Xhosa': 'xh', 'Yiddish': 'yi', 'Yoruba': 'yo', 'Zulu': 'zu'};
+
+        let translateTimer = null;
+
+        function setGoogTransCookie(value) {
+            document.cookie = `googtrans=${value}; path=/;`;
+            if (window.location.hostname) {
+                document.cookie = `googtrans=${value}; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function clearGoogTransCookie() {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+            if (window.location.hostname) {
+                document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=${window.location.hostname};`;
+            }
+        }
+
+        function findTargetCode(langName, combo) {
+            const mappedCode = langCodes[langName] || '';
+            if (mappedCode && combo.querySelector(`option[value="${mappedCode}"]`)) {
+                return mappedCode;
+            }
+
+            const normalized = langName.trim().toLowerCase();
+            const byLabel = Array.from(combo.options).find(option =>
+                option.text.trim().toLowerCase() === normalized
+            );
+
+            return byLabel ? byLabel.value : mappedCode;
+        }
+
+        function applyGoogleTranslateLanguage(langName) {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            let attempts = 0;
+            translateTimer = setInterval(() => {
+                attempts += 1;
+                const combo = document.querySelector('.goog-te-combo');
+
+                if (combo) {
+                    const targetCode = findTargetCode(langName, combo);
+                    if (targetCode) {
+                        combo.value = targetCode;
+                        combo.dispatchEvent(new Event('change'));
+                        setGoogTransCookie(`/en/${targetCode}`);
+                        clearInterval(translateTimer);
+                        translateTimer = null;
+                        return;
+                    }
+                }
+
+                if (attempts >= 20) {
+                    clearInterval(translateTimer);
+                    translateTimer = null;
+                    console.warn(`Google Translate could not resolve language: ${langName}`);
+                }
+            }, 150);
+        }
+
+        function resetGoogleTranslateState() {
+            if (translateTimer) {
+                clearInterval(translateTimer);
+                translateTimer = null;
+            }
+
+            const combo = document.querySelector('.goog-te-combo');
+            if (combo) {
+                combo.value = '';
+                combo.dispatchEvent(new Event('change'));
+            }
+            clearGoogTransCookie();
+        }
+
+        function setLanguage(val) {
+            localStorage.setItem('eburon-lang', val);
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = val;
+            });
+
+            if (val === 'en' || val === 'nl') {
+                document.body.setAttribute('data-language', val);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (val.startsWith('gt-')) {
+                const langName = val.slice(3);
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(langName);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('eburon-lang') || 'en';
+
+            document.querySelectorAll('.lang-select').forEach(select => {
+                select.value = savedLang;
+            });
+
+            if (savedLang === 'en' || savedLang === 'nl') {
+                document.body.setAttribute('data-language', savedLang);
+                resetGoogleTranslateState();
+                return;
+            }
+
+            if (savedLang.startsWith('gt-')) {
+                document.body.setAttribute('data-language', 'en');
+                applyGoogleTranslateLanguage(savedLang.slice(3));
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
